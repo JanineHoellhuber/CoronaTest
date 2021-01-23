@@ -4,7 +4,31 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<h1>COVID-19 Screening</h1>
+<hr />
+<p>
+    Das COVID-19 Screening steht als Hilfsmittel, zur Anmeldung für eine freiwillige COVID-19 Testung, zur Verfügung.
+    Sie können sich jederzeit für eine Testung eintragen. Melden Sie sich jedoch bitte zuerst an oder registrieren Sie sich mit Ihren Kontaktdaten,
+    falls sie noch kein bestehendes Konto haben.
+</p>
+<br />
+<br />
+<h4>Anmelden:</h4>
+
+<div class="row">
+    <form method="post">
+        <div class="form-group col-md-9">
+            <button type="submit" class="btn btn-primary" asp-page-handler="RegistrationBtn_Click">
+                Registration
+            </button>
+        </div>
+    </form>
+    <form method="post">
+        <div class="form-group">
+            <button type="submit" class="btn btn-info" asp-page-handler="LogInBtn_Click">
+                Einloggen (bestehender Benutzer)
+            </button>
+        </div>
+    </form>
 </div>

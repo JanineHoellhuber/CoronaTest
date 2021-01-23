@@ -1,0 +1,54 @@
+﻿@page
+@model WebApplication1.Pages.Participant.LogInModel
+@{
+}
+
+
+<p>
+    Sie haben die Möglichkeit neue Testungen anzumelden und Ihre Stammdaten zu ändern.
+</p>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ParticipantDto.FirstOrDefault().From)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParticipantDto.FirstOrDefault().CampaignName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParticipantDto.FirstOrDefault().TestCenterName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParticipantDto.FirstOrDefault().TestResult)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var pd in Model.ParticipantDto)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(_ => pd.From)
+            </td>
+            <td>
+                @Html.DisplayFor(_ => pd.CampaignName)
+            </td>
+            <td>
+                @Html.DisplayFor(_ => pd.TestCenterName)
+            </td>
+            <td>
+                @Html.DisplayFor(_ => pd.TestResult)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@pd.Id">Bearbeiten</a> |
+                <a asp-page="./SendConfirmation" asp-route-id="@pd.Id">Bestätigung senden</a> |
+                <a asp-page="./Delete" asp-route-id="@pd.Id">Löschen</a>
+            </td>
+        </tr>}
+    </tbody>
+
+</table>
