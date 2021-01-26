@@ -34,9 +34,9 @@ namespace Test.Web.Pages.Security
         }
 
 
-        public async Task<IActionResult> OnPostAsync(Guid verificationIdentifier)
+        public async Task<IActionResult> OnPostAsync()
         {
-           VerificationToken verificationToken = await _unitOfWork.VerificationTokens.GetTokenByIdentifierAsync(verificationIdentifier);
+           VerificationToken verificationToken = await _unitOfWork.VerificationTokens.GetTokenByIdentifierAsync(VerificationIdentifier);
 
            if(verificationToken.Token == Token && verificationToken.ValidUntil >= DateTime.Now)
             {

@@ -1,5 +1,4 @@
-﻿using CoronaTest.Core.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -41,11 +40,11 @@ namespace ClassLibrary1
         [DisplayName("HausNr")]
         public string HouseNr { get; set; }
 
-
+        
         [DisplayName("Tür")]
         public string Door { get; set; }
 
-
+       
         [DisplayName("Stiege")]
         public string Stair { get; set; }
 
@@ -61,7 +60,7 @@ namespace ClassLibrary1
         [DisplayName("Stadt")]
         public string City { get; set; }
 
-          public List<VerificationToken> Verifications { get; set; }
+        //  public List<VerificationToken> Verifications { get; set; }
 
 
     }

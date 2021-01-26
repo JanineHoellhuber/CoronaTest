@@ -7,7 +7,7 @@ namespace ClassLibrary1.Entities
     public class Campaign
     {
         public ICollection<TestCenter> AvailableTestCenters { get; set; }
-
+        
         public DateTime From { get; set; }
         public string Name { get; set; }
         public DateTime To { get; set; }

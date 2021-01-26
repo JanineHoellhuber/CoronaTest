@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ClassLibrary1.DTO;
+using CoronaTest.Core.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,12 +11,12 @@ namespace WebApplication1.Pages.Examination
 {
     public class DeleteModel : PageModel
     {
-      /*  private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         public DeleteModel(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-        }*/
+        }
         [BindProperty]
         public ParticipantDto ParticipantDto { get; set; }
         public async Task<IActionResult> OnGet(int? id)
@@ -25,7 +26,7 @@ namespace WebApplication1.Pages.Examination
                 return NotFound();
             }
 
-            // ParticipantDto = await _unitOfWork.PupilRepository.GetByIdAsync(id.Value);
+            // ParticipantDto = await _unitOfWork.ParticipantRepository.GetByIdAsync(id.Value);
             if (ParticipantDto == null)
             {
                 return NotFound();
@@ -40,14 +41,14 @@ namespace WebApplication1.Pages.Examination
                 return NotFound();
             }
 
-            //ParticipantDto = await _unitOfWork.PupilRepository.GetByIdAsync(id.Value);
+           // ParticipantDto = await _unitOfWork.ParticipantRepository.GetByIdAsync(id.Value);
             if (ParticipantDto == null)
             {
                 return NotFound();
             }
 
-           /* _unitOfWork.ParticipantRepository.Remove(Pupil);
-            await _unitOfWork.SaveChangesAsync();*/
+           // _unitOfWork.ParticipantRepository.Remove(ParticipantDto);
+          //  await _unitOfWork.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

@@ -26,9 +26,9 @@ namespace CoronaTest.Core.Service
                 TwilioClient.Init(_accountSid, _authToken);
 
                 var sms = MessageResource.Create(
-                    body: message,
+                    body: "Hello World from Twilio SMS service.",
                     from: new Twilio.Types.PhoneNumber("+15017122661"),
-                    to: new Twilio.Types.PhoneNumber(to)
+                    to: new Twilio.Types.PhoneNumber("+4367761289711")
                 );
             }
             catch(Exception ex)

@@ -1,5 +1,4 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.ComponentModel.DataAnnotations;
 using CoronaTest.Persistence.Repositories;
 using CoronaTest.Core.Contracts;
+using CoronaTest.Core.Persistence;
 
 namespace CoronaTest.Persistence
 {
@@ -21,8 +21,17 @@ namespace CoronaTest.Persistence
 
         public UnitOfWork() : this(new ApplicationDbContext())
         {
+            _dbContext = new ApplicationDbContext();
+            CampaignRepository = new CampaignRepository(_dbContext);
+            TestCenterRepository = new TestCenterRepository(_dbContext);
+            ParticipantRepository = new ParticipantRepository(_dbContext);
+
 
         }
+        public ICampaignRepository CampaignRepository { get; }
+
+        public ITestCenterRepository TestCenterRepository { get; }
+        public IParticipantRepository ParticipantRepository { get; }
 
         public UnitOfWork(ApplicationDbContext dbContext)
         {
@@ -76,3 +85,5 @@ namespace CoronaTest.Persistence
         }
     }
 }
+
+

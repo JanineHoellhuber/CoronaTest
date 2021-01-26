@@ -19,6 +19,6 @@ namespace ClassLibrary1.Entities
         public static Examination CreateNew()
         {
             return new Examination();
-             }
         }
+    }
 }

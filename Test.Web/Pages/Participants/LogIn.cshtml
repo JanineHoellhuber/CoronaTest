@@ -1,5 +1,5 @@
 ﻿@page
-@model WebApplication1.Pages.Participant.LogInModel
+@model WebApplication1.Pages.Participants.LogInModel
 @{
 }
 
@@ -7,6 +7,23 @@
 <p>
     Sie haben die Möglichkeit neue Testungen anzumelden und Ihre Stammdaten zu ändern.
 </p>
+
+<div class="row">
+    <form method="post">
+        <div class="form-group col-md-9">
+            <button type="submit" class="btn btn-primary" asp-page-handler="NewExaminationBtn_Click">
+                Neue Testung
+            </button>
+        </div>
+    </form>
+    <form method="post">
+        <div class="form-group">
+            <button type="submit" class="btn btn-info" asp-page-handler="CancelBtn_Click">
+                Abbrechen
+            </button>
+        </div>
+    </form>
+</div>
 
 <table class="table">
 
@@ -19,7 +36,7 @@
                 @Html.DisplayNameFor(model => model.ParticipantDto.FirstOrDefault().CampaignName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ParticipantDto.FirstOrDefault().TestCenterName)
+               @Html.DisplayNameFor(model => model.ParticipantDto.FirstOrDefault().TestCenterName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ParticipantDto.FirstOrDefault().TestResult)
@@ -44,11 +61,13 @@
                 @Html.DisplayFor(_ => pd.TestResult)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@pd.Id">Bearbeiten</a> |
-                <a asp-page="./SendConfirmation" asp-route-id="@pd.Id">Bestätigung senden</a> |
-                <a asp-page="./Delete" asp-route-id="@pd.Id">Löschen</a>
+                <a asp-page="./Examination/Edit" asp-route-id="@pd.Id">Bearbeiten</a> |
+                <a asp-page="./Examination/SendConfirmation" asp-route-id="@pd.Id">Bestätigung senden</a> |
+                <a asp-page="./Examination/Delete" asp-route-id="@pd.Id">Löschen</a>
             </td>
         </tr>}
     </tbody>
 
 </table>
+
+   
