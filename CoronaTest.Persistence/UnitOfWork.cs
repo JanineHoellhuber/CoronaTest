@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using CoronaTest.Persistence.Repositories;
 using CoronaTest.Core.Contracts;
 using CoronaTest.Core.Persistence;
+using ClassLibrary1;
 
 namespace CoronaTest.Persistence
 {
@@ -21,11 +22,15 @@ namespace CoronaTest.Persistence
 
         public UnitOfWork() : this(new ApplicationDbContext())
         {
-            _dbContext = new ApplicationDbContext();
+        }
+
+        public UnitOfWork(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
             CampaignRepository = new CampaignRepository(_dbContext);
             TestCenterRepository = new TestCenterRepository(_dbContext);
             ParticipantRepository = new ParticipantRepository(_dbContext);
-
+            VerificationTokens = new TokenVerificationRepository(_dbContext);
 
         }
         public ICampaignRepository CampaignRepository { get; }
@@ -33,12 +38,6 @@ namespace CoronaTest.Persistence
         public ITestCenterRepository TestCenterRepository { get; }
         public IParticipantRepository ParticipantRepository { get; }
 
-        public UnitOfWork(ApplicationDbContext dbContext)
-        {
-            _dbContext = dbContext;
-
-            VerificationTokens = new TokenVerificationRepository(_dbContext);
-        }
 
         public async Task<int> SaveChangesAsync()
         {
@@ -48,21 +47,20 @@ namespace CoronaTest.Persistence
                 .Select(e => e.Entity);
             foreach (var entity in entities)
             {
-                /*await*/
-                ValidateEntity(entity);
+                await ValidateEntity(entity);
             }
             return await _dbContext.SaveChangesAsync();
         }
 
-        private /*async Task*/ void ValidateEntity(object entity)
+        private async Task ValidateEntity(object entity)
         {
-            /*if(entity is Participant participant)
+            if(entity is Participant participant)
             {
                 if(await _dbContext.Participant.AnyAsync(p => p.Id != participant.Id && p.SocialSecurityNumber == participant.SocialSecurityNumber))
                 {
                     throw new ValidationException($"Eine Person mit der Sozialversicherungsnummer {participant.SocialSecurityNumber} ist bereits registriert.");
                 }
-            }*/
+            }
         }
 
         public async Task DeleteDatabaseAsync() => await _dbContext.Database.EnsureDeletedAsync();
@@ -71,7 +69,7 @@ namespace CoronaTest.Persistence
 
         public async ValueTask DisposeAsync()
         {
-            await DisposeAsync();
+            await DisposeAsync(true);
             GC.SuppressFinalize(this);
         }
 

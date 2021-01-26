@@ -21,5 +21,15 @@ namespace Test.Web.Pages
         {
 
         }
+        public IActionResult OnPostRegistrationBtn_Click()
+        {
+            return RedirectToPage("./Participants/Registration");
+        }
+
+        public IActionResult OnPostLogInBtn_Click()
+        {
+            return RedirectToPage("../Participants/LogIn");
+        }
+
     }
 }

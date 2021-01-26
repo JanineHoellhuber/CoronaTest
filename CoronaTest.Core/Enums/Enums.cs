@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClassLibrary1.Enums
+namespace CoronaTest.Enums
 {
-    public class Enums
-    {
+   
         public enum TestResult
         {
             Unknown,
@@ -19,5 +18,5 @@ namespace ClassLibrary1.Enums
             Registered,
             Tested
         }
-    }
+    
 }

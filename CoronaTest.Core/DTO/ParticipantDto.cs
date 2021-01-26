@@ -1,7 +1,7 @@
-﻿using System;
+﻿using CoronaTest.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using static ClassLibrary1.Enums.Enums;
 
 namespace ClassLibrary1.DTO
 {

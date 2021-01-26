@@ -1,10 +1,11 @@
-﻿using System;
+﻿using CoronaTest.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ClassLibrary1.Entities
 {
-    public class Campaign
+    public class Campaign : EntityObject
     {
         public ICollection<TestCenter> AvailableTestCenters { get; set; }
 

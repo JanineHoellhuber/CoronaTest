@@ -1,11 +1,12 @@
-﻿using System;
+﻿using CoronaTest.Core.Entities;
+using CoronaTest.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using static ClassLibrary1.Enums.Enums;
 
 namespace ClassLibrary1.Entities
 {
-    public class Examination
+    public class Examination : EntityObject
     {
         public Participant Participant { get; set; }
         public ExaminationStates State { get; set; }

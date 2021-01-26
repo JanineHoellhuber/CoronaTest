@@ -1,4 +1,5 @@
-﻿using CoronaTest.Core.Models;
+﻿using CoronaTest.Core.Entities;
+using CoronaTest.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ClassLibrary1
 {
-    public class Participant 
+    public class Participant : EntityObject
     {
         [Required]
         [DisplayName("Vorname")]

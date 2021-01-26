@@ -7,7 +7,7 @@ namespace CoronaTest.ImportController
 {
     class Program
     {
-        static async Task Main()
+        static async Task Main(string[] args)
         {
             await InitDataAsync();
 
@@ -30,7 +30,7 @@ namespace CoronaTest.ImportController
 
             Console.WriteLine("Daten werden von csv-Dateien eingelesen");
             var campaigns = ImportController.ReadFromCsv().ToArray();
-            Console.WriteLine($"  {campaigns.Count()} Produkte eingelesen");
+            Console.WriteLine($"  {campaigns.Count()} Kampagnen eingelesen");
 
             await unitOfWork.CampaignRepository.AddRangeAsync(campaigns);
 
