@@ -30,6 +30,12 @@ namespace WebApplication1
 
         public async Task<IActionResult> OnPost()
         {
+          
+            return Page();
+        }
+
+        public async Task<ActionResult> OnPostLogInBtn_Click()
+        {
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -38,15 +44,12 @@ namespace WebApplication1
             await _unitOfWork.ParticipantRepository.AddAsync(Participant);
             await _unitOfWork.SaveChangesAsync();
 
-             return RedirectToPage("./Index");
+            return RedirectToPage("./Index");
+
 
             return Page();
-        }
-
-        public IActionResult OnPostLogInBtn_Click()
-        {
             //TODO: Benutzer in Db speichern
-            return RedirectToPage("./Participant/Login");
+            //return RedirectToPage("./Participant/Login");
         }
 
         public IActionResult OnPostCancelBtn_Click()
