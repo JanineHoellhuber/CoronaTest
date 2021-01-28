@@ -23,7 +23,7 @@ namespace Test.Web.Pages.Security
         public string SocialSecurityNumber { get; set; }
         [BindProperty]
         [Required(ErrorMessage = "Die {0} ist verpflichtend!")]
-        [StringLength(16, ErrorMessage = "Die {0} muss zwischen {1} und {2} Zeichen lang sein", MinimumLength = 16)]
+        [StringLength(16, ErrorMessage = "Die {0} muss zwischen {1} und {2} Zeichen lang sein", MinimumLength = 5)]
         [DisplayName("Handy-Nr")]
         public string Mobilenumber { get; set; }
         
@@ -40,7 +40,10 @@ namespace Test.Web.Pages.Security
             {
                 return Page();
             }
-            if(SocialSecurityNumber != "0000080384")
+
+            var participant = await _unitOfWork.ParticipantRepository.GetByParticipantBySocialSecurityNumberAndMobileNumberAsync(SocialSecurityNumber);
+
+            if (SocialSecurityNumber != participant.SocialSecurityNumber)
             {
                 ModelState.AddModelError(nameof(SocialSecurityNumber), "Diese SVNr ist unbekannt!");
 

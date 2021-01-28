@@ -13,6 +13,7 @@ namespace CoronaTest.Core.Contracts
 
         ICampaignRepository CampaignRepository { get; }
         ITestCenterRepository TestCenterRepository { get; }
+        IExaminationRepository ExaminationRepository { get; }
         IParticipantRepository ParticipantRepository { get; }
 
         Task<int> SaveChangesAsync();

@@ -8,36 +8,36 @@
 <h2>Registierung</h2>
 
 <hr />
+<form method="post">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label asp-for="Participant.FirstName" class="control-label"></label>
+            <input asp-for="Participant.FirstName" class="form-control" />
+            <span asp-validation-for="Participant.FirstName" class="text-danger"></span>
+        </div>
 
-<div class="row">
-    <div class="form-group col-md-6">
-        <label asp-for="Participant.FirstName" class="control-label"></label>
-        <input asp-for="Participant.FirstName" class="form-control" />
-        <span asp-validation-for="Participant.FirstName" class="text-danger"></span>
+        <div class="form-group col-md-6">
+            <label asp-for="Participant.LastName" class="control-label"></label>
+            <input asp-for="Participant.LastName" class="form-control" />
+            <span asp-validation-for="Participant.LastName" class="text-danger"></span>
+        </div>
     </div>
-
-    <div class="form-group col-md-6">
-        <label asp-for="Participant.LastName" class="control-label"></label>
-        <input asp-for="Participant.LastName" class="form-control" />
-        <span asp-validation-for="Participant.LastName" class="text-danger"></span>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Participant.Birthdate" class="control-label"></label>
+            <input asp-for="Participant.Birthdate" class="form-control" type="date">
+            <span asp-validation-for="Participant.Birthdate" class="alert-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Participant.Gender" class="control-label"></label>
+            <select asp-for="Participant.Gender" class="form-control">
+                <option value="" selected>Auswahl treffen</option>
+                <option value="männlich">männlich</option>
+                <option value="weiblich">weiblich</option>
+            </select>
+            <span asp-validation-for="Participant.Gender" class="alert-danger"></span>
+        </div>
     </div>
-</div>
-<div class="form-row">
-    <div class="form-group col-md-6">
-        <label asp-for="Participant.Birthdate" class="control-label"></label>
-        <input asp-for="Participant.Birthdate" class="form-control" type="date">
-        <span asp-validation-for="Participant.Birthdate" class="alert-danger"></span>
-    </div>
-    <div class="form-group col-md-6">
-        <label asp-for="Participant.Gender" class="control-label"></label>
-        <select asp-for="Participant.Gender" class="form-control">
-            <option value="" selected>Auswahl treffen</option>
-            <option value="männlich">männlich</option>
-            <option value="weiblich">weiblich</option>
-        </select>
-        <span asp-validation-for="Participant.Gender" class="alert-danger"></span>
-    </div>
-  </div>
     <div class="row">
         <div class="form-group col-md-6">
             <label asp-for="Participant.SocialSecurityNumber" class="control-label"></label>
@@ -78,40 +78,34 @@
         </div>
     </div>
     <div class="row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
             <label asp-for="Participant.Postcode" class="control-label"></label>
             <input asp-for="Participant.Postcode" class="form-control" />
             <span asp-validation-for="Participant.Postcode" class="text-danger"></span>
         </div>
 
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
             <label asp-for="Participant.Place" class="control-label"></label>
             <input asp-for="Participant.Place" class="form-control" />
             <span asp-validation-for="Participant.Place" class="text-danger"></span>
         </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Participant.City" class="control-label"></label>
+            <input asp-for="Participant.City" class="form-control" />
+            <span asp-validation-for="Participant.City" class="text-danger"></span>
+        </div>
     </div>
-
-    <div class="row">
-        <form method="post">
-            <div class="form-group">
-                <button type="submit" class="btn btn-success" asp-page-handler="LogInBtn_Click">
-                    Anmeldung starten
-                </button>
-            </div>
-        </form>
-        <form method="post">
-            <div class="form-group col-md-5">
-                <button type="submit" class="btn btn-secondary" asp-page-handler="CancelBtn_Click">
-                    Abbrechen
-                </button>
-            </div>
-        </form>
+    <div>
+        <button type="submit" class="btn btn-success">
+                 Anmeldung starten
+         </button>
+               <a type="button" asp-page="../Index" class="btn btn-secondary">Abbrechen</a>
+        
     </div>
+</form>
 
 
 
-    @section Scripts {
-        {await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
+
 
 

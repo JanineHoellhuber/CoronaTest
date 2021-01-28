@@ -15,6 +15,7 @@ namespace CoronaTest.Persistence
         public DbSet<Campaign> Campaign { get; set; }
         public DbSet<TestCenter> TestCenter { get; set; }
         public DbSet<Participant> Participant { get; set; }
+        public DbSet<Examination> Examination { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

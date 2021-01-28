@@ -30,10 +30,12 @@ namespace CoronaTest.Persistence
             CampaignRepository = new CampaignRepository(_dbContext);
             TestCenterRepository = new TestCenterRepository(_dbContext);
             ParticipantRepository = new ParticipantRepository(_dbContext);
+            ExaminationRepository = new ExaminationRepository(_dbContext);
             VerificationTokens = new TokenVerificationRepository(_dbContext);
 
         }
         public ICampaignRepository CampaignRepository { get; }
+        public IExaminationRepository ExaminationRepository { get; }
 
         public ITestCenterRepository TestCenterRepository { get; }
         public IParticipantRepository ParticipantRepository { get; }

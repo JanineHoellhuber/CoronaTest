@@ -28,7 +28,7 @@ namespace Test.Web.Pages
 
         public IActionResult OnPostLogInBtn_Click()
         {
-            return RedirectToPage("../Participants/LogIn");
+            return RedirectToPage("./Security/Login");
         }
 
     }

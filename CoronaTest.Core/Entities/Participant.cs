@@ -9,7 +9,7 @@ namespace ClassLibrary1
 {
     public class Participant : EntityObject
     {
-        [Required]
+        [Required(ErrorMessage = "Vorname ist verpflichtend")]
         [DisplayName("Vorname")]
         public string FirstName { get; set; }
         [Required]

@@ -5,6 +5,7 @@ using CoronaTest.Core.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,7 +33,12 @@ namespace CoronaTest.Persistence.Repositories
              await _dbContext.Participant
                 .AddAsync(participant);
         }
-       
+        public async Task<Participant> GetByParticipantBySocialSecurityNumberAndMobileNumberAsync(string socialSecurityNumber)
+        {
+           return await _dbContext.Participant
+                .Where(p => p.SocialSecurityNumber == socialSecurityNumber).SingleOrDefaultAsync();
+        }
+
 
     }
 }

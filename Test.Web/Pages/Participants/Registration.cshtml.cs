@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using ClassLibrary1;
@@ -22,39 +23,29 @@ namespace WebApplication1
         public Participant Participant {get; set; }
 
 
-        public IActionResult OnGet()
+        public void OnGet()
         {
-            return Page();
+            Participant = new Participant();
 
         }
 
         public async Task<IActionResult> OnPost()
         {
-          
-            return Page();
-        }
-
-        public async Task<ActionResult> OnPostLogInBtn_Click()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
 
             await _unitOfWork.ParticipantRepository.AddAsync(Participant);
-            await _unitOfWork.SaveChangesAsync();
+            try
+            {
+                await _unitOfWork.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
-
-
-            return Page();
-            //TODO: Benutzer in Db speichern
-            //return RedirectToPage("./Participant/Login");
-        }
-
-        public IActionResult OnPostCancelBtn_Click()
-        {
+            }
+            catch(ValidationException ex)
+            {
+                ModelState.AddModelError("", $"{ex.Message}");
+                return Page();
+            }
             return RedirectToPage("../Index");
         }
+
+     
     }
 }

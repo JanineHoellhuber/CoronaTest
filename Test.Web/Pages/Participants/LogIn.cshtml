@@ -30,39 +30,38 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ParticipantDto.FirstOrDefault().From)
+                @Html.DisplayNameFor(model => model.Examinations.FirstOrDefault().ExaminationAt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ParticipantDto.FirstOrDefault().CampaignName)
+                @Html.DisplayNameFor(model => model.Examinations.FirstOrDefault().Campaign.Name)
             </th>
             <th>
-               @Html.DisplayNameFor(model => model.ParticipantDto.FirstOrDefault().TestCenterName)
+               @Html.DisplayNameFor(model => model.Examinations.FirstOrDefault().TestCenter.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ParticipantDto.FirstOrDefault().TestResult)
+                @Html.DisplayNameFor(model => model.Examinations.FirstOrDefault().Result)
             </th>
         </tr>
     </thead>
 
     <tbody>
-        @foreach (var pd in Model.ParticipantDto)
+        @foreach (var pd in Model.Examinations)
         {
         <tr>
             <td>
-                @Html.DisplayFor(_ => pd.From)
+                @Html.DisplayFor(_ => pd.ExaminationAt.ToShortDateString())
             </td>
             <td>
-                @Html.DisplayFor(_ => pd.CampaignName)
+                @Html.DisplayFor(_ => pd.Campaign.Name)
             </td>
             <td>
-                @Html.DisplayFor(_ => pd.TestCenterName)
+                @Html.DisplayFor(_ => pd.TestCenter.Name)
             </td>
             <td>
-                @Html.DisplayFor(_ => pd.TestResult)
+                @Html.DisplayFor(_ => pd.Result)
             </td>
             <td>
                 <a asp-page="./Examination/Edit" asp-route-id="@pd.Id">Bearbeiten</a> |
-                <a asp-page="./Examination/SendConfirmation" asp-route-id="@pd.Id">Bestätigung senden</a> |
                 <a asp-page="./Examination/Delete" asp-route-id="@pd.Id">Löschen</a>
             </td>
         </tr>}
