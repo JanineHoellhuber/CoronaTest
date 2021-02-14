@@ -1,4 +1,4 @@
-﻿using ClubAdministration.Wpf.Common.Contracts;
+﻿using CoronaTest.Wpf.Common.Contracts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using ValidationResult = System.ComponentModel.DataAnnotations.ValidationResult;
 
-namespace ClubAdministration.Wpf.Common
+namespace CoronaTest.Wpf.Common
 {
   public abstract class BaseViewModel : NotifyPropertyChanged,
                             INotifyDataErrorInfo, IValidatableObject

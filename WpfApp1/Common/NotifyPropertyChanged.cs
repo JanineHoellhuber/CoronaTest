@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ClubAdministration.Wpf.Common
+namespace CoronaTest.Wpf.Common
 {
   public class NotifyPropertyChanged : INotifyPropertyChanged
     {

@@ -1,11 +1,10 @@
 ﻿using ClassLibrary1.Entities;
-using ClubAdministration.Wpf.Common;
-using ClubAdministration.Wpf.Common.Contracts;
+using CoronaTest.Wpf.Common;
 using CoronaTest.Core.Contracts;
 using CoronaTest.Core.DTO;
 using CoronaTest.Enums;
 using CoronaTest.Persistence;
-using CoronaTest.Wpf.ViewModels;
+using CoronaTest.Wpf.Common.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,8 +12,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ClubAdministration.Wpf.Common;
 
-namespace ClubAdministration.Wpf.ViewModels
+namespace CoronaTest.Wpf.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {

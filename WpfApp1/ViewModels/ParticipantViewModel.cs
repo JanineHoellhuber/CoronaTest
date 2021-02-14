@@ -1,5 +1,5 @@
-﻿using ClubAdministration.Wpf.Common;
-using ClubAdministration.Wpf.Common.Contracts;
+﻿using CoronaTest.Wpf.Common;
+using CoronaTest.Wpf.Common.Contracts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

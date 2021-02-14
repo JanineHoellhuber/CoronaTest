@@ -1,4 +1,4 @@
-﻿namespace ClubAdministration.Wpf.Common.Contracts
+﻿namespace CoronaTest.Wpf.Common.Contracts
 {
   public interface IWindowController
   {

@@ -1,11 +1,10 @@
-﻿using ClubAdministration.Wpf.Common.Contracts;
-using ClubAdministration.Wpf.ViewModels;
-using CoronaTest.Wpf;
+﻿using CoronaTest.Wpf.ViewModels;
+using CoronaTest.Wpf.Common.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace ClubAdministration.Wpf.Common
+namespace CoronaTest.Wpf.Common
 {
   public class WindowController : IWindowController
   {
@@ -20,6 +19,7 @@ namespace ClubAdministration.Wpf.Common
         null => throw new ArgumentNullException(nameof(viewModel)),
 
         MainViewModel _ => new MainWindow(),
+        ParticipantViewModel _ => new ParticipantWindow(),
 
         // default -> InvalidOperationException
         _ => throw new InvalidOperationException($"Unbekanntes ViewModel '{viewModel}'"),
