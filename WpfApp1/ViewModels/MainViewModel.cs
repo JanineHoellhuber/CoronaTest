@@ -62,6 +62,7 @@ namespace ClubAdministration.Wpf.ViewModels
             {
                 _from = value;
                 OnPropertyChanged(nameof(From));
+                _ = LoadDataAsync();
             }
 
         }
@@ -72,6 +73,8 @@ namespace ClubAdministration.Wpf.ViewModels
             {
                 _to = value;
                 OnPropertyChanged(nameof(To));
+                _ = LoadDataAsync();
+
             }
 
         }

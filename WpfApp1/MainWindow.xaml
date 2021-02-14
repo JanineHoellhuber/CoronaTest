@@ -58,7 +58,7 @@
         </StackPanel>
         <Button Grid.Row="8" Grid.Column="4"
                 Margin="187.8,257,10.4,49"
-                FontSize="14"
+                FontSize="12"
                 Command="{Binding CmdParticipant}" Grid.ColumnSpan="2" Content="Zu den Teilnehmern"/>
         <DataGrid Grid.Row="8" Grid.ColumnSpan="5"
                   AutoGenerateColumns="False"
