@@ -7,7 +7,9 @@
 * Wenn man eingeloggt ist, hat man die Möglichkeit als Benutzer, dass man seine eigenen Stammdaten verändert oder eine neue Testung hinzufügt.
 
 ## Zusammenfassung-WPF:
-
+* Mit Von und Bis Datum kann nach bestimmten Testungen gesucht werden. 
+* Es soll zudem eingetragen werden können ob jemand als "negativ" oder "positiv" getestet wurde.
+* Ein count zählt die bereits getesteten Personen.
 ## Statusbericht:
 
 bis 15.2: 
