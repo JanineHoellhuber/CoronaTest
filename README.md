@@ -23,7 +23,7 @@ bis 15.2:
 * Webseite
 * WPF
 
-* Probleme bei:
+## Probleme bei:
     * SMS verschicken 
     * WPF: 
         * Problem zwischen Window und ViewModel (Befehle werden nicht ausgeführt)
