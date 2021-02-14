@@ -22,10 +22,9 @@ bis 15.2:
 * SMS-Verifikation
 * Webseite
 * WPF
-
 ## Probleme bei:
-    * SMS verschicken 
-    * WPF: 
-        * Problem zwischen Window und ViewModel (Befehle werden nicht ausgeführt)
+* SMS verschicken/Verifizierung
+* WPF: 
+     * Problem zwischen Window und ViewModel (Befehle werden nicht ausgeführt)
     
 
