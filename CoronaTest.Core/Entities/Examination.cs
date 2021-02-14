@@ -22,4 +22,8 @@ namespace ClassLibrary1.Entities
             return new Examination();
              }
         }
+
+      
+
+
 }

@@ -36,7 +36,7 @@
                 @Html.DisplayNameFor(model => model.Examinations.FirstOrDefault().Campaign.Name)
             </th>
             <th>
-               @Html.DisplayNameFor(model => model.Examinations.FirstOrDefault().TestCenter.Name)
+                @Html.DisplayNameFor(model => model.Examinations.FirstOrDefault().TestCenter.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Examinations.FirstOrDefault().Result)
@@ -47,26 +47,62 @@
     <tbody>
         @foreach (var pd in Model.Examinations)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(_ => pd.ExaminationAt.ToShortDateString())
-            </td>
-            <td>
-                @Html.DisplayFor(_ => pd.Campaign.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(_ => pd.TestCenter.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(_ => pd.Result)
-            </td>
-            <td>
-                <a asp-page="./Examination/Edit" asp-route-id="@pd.Id">Bearbeiten</a> |
-                <a asp-page="./Examination/Delete" asp-route-id="@pd.Id">Löschen</a>
-            </td>
-        </tr>}
+            <tr>
+                <td>
+                    @Html.DisplayFor(_ => pd.ExaminationAt.ToShortDateString())
+                </td>
+                <td>
+                    @Html.DisplayFor(_ => pd.Campaign.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(_ => pd.TestCenter.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(_ => pd.Result)
+                </td>
+                <td>
+                    <a asp-page="./Examination/Edit" asp-route-id="@pd.Id">Bearbeiten</a> |
+                    <a asp-page="./Examination/Delete" asp-route-id="@pd.Id">Löschen</a>
+                </td>
+            </tr>
+}
     </tbody>
 
 </table>
 
-   
+<div class="col-md-4">
+    <div>
+        <h2>Stammdaten</h2>
+    </div>
+    <div class="form-group col-md-4">
+        <label asp-for="Participant.Name" class="control-label"></label>
+        <input asp-for="Participant.Name" class="form-control" />
+        <span asp-validation-for="Participant.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label asp-for="Participant.Street" class="control-label"></label>
+        <input asp-for="Participant.Street" class="form-control" />
+        <span asp-validation-for="Participant.Street" class="text-danger"></span>
+    </div>  
+    <div class="form-group col-md-4">
+        <label asp-for="Participant.HouseNr" class="control-label"></label>
+        <input asp-for="Participant.HouseNr" class="form-control" />
+        <span asp-validation-for="Participant.HouseNr" class="text-danger"></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label asp-for="Participant.Postcode" class="control-label"></label>
+        <input asp-for="Participant.Postcode" class="form-control" />
+        <span asp-validation-for="Participant.Postcode" class="text-danger"></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label asp-for="Participant.Place" class="control-label"></label>
+        <input asp-for="Participant.Place" class="form-control" />
+        <span asp-validation-for="Participant.Place" class="text-danger"></span>
+    </div> 
+    <div class="form-group col-md-4">
+        <label asp-for="Participant.Mobilenumber" class="control-label"></label>
+        <input asp-for="Participant.Mobilenumber" class="form-control" />
+        <span asp-validation-for="Participant.Mobilenumber" class="text-danger"></span>
+    </div>
+</div>
+

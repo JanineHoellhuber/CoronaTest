@@ -39,6 +39,11 @@ namespace CoronaTest.Persistence.Repositories
                 .Where(p => p.SocialSecurityNumber == socialSecurityNumber).SingleOrDefaultAsync();
         }
 
+        public async Task<Participant> GetByIdAsync(int id)
+        {
+            return await _dbContext.Participant
+                .Where(p => p.Id == id).SingleOrDefaultAsync();
+        }
 
     }
 }

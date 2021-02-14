@@ -1,4 +1,5 @@
 ﻿using ClassLibrary1.Entities;
+using CoronaTest.Core.DTO;
 using CoronaTest.Core.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -25,6 +26,17 @@ namespace CoronaTest.Persistence.Repositories
                 .ToArrayAsync();
                 
         }
+
+        public async Task<ExaminationDto[]> GetExaminationByDate(DateTime from, DateTime to)
+        {
+            return await _dbContext.Examination
+               .Include(p => p.Participant)
+               .Select(s => new ExaminationDto(s))
+               .ToArrayAsync();
+
+
+        }
+
 
     }
 }

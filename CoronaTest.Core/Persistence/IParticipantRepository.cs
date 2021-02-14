@@ -16,6 +16,6 @@ namespace CoronaTest.Core.Persistence
         //void Remove(ParticipantDto participantDto);
         //Task<ParticipantDto> GetByIdAsync(int value);
         public Task<Participant> GetByParticipantBySocialSecurityNumberAndMobileNumberAsync(string socialSecurityNumber);
-
+        Task<Participant> GetByIdAsync(int id);
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ClassLibrary1;
 using ClassLibrary1.DTO;
 using ClassLibrary1.Entities;
 using CoronaTest.Core.Contracts;
@@ -18,7 +19,7 @@ namespace WebApplication1.Pages.Participants
          public Examination[] Examinations { get; set; }
 
         [BindProperty]
-        public ParticipantDto Participant { get; set; }
+        public Participant Participant { get; set; }
 
 
         public LogInModel(IUnitOfWork unitOfWork)

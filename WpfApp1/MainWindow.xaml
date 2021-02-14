@@ -1,0 +1,77 @@
+﻿<controls:MetroWindow x:Class="CoronaTest.Wpf.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      mc:Ignorable="d"
+        Title="Testeintragung" Height="450" Width="550">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="230"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="4" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="6.8,14.8,123.2,14" Text="Von:" Grid.Column="1"/>
+        <DatePicker Grid.Row="4" Grid.Column="2" Margin="0,3,0,3"
+                    SelectedDate="{Binding From}"></DatePicker>
+        <TextBlock Grid.Row="4" Grid.Column="4" VerticalAlignment="Center" Margin="9.8,14.8,150.2,14"><Run Text="B"/><Run Text="is:"/></TextBlock>
+        <DatePicker Grid.Row="4" Grid.Column="4" Margin="89.8,4.8,10.2,0.8"
+                    SelectedDate="{Binding To}"></DatePicker>
+        <Button Grid.Row="4" Grid.Column="5"
+                    Command="{Binding CmdCancel}" Margin="9.8,8.8,0.4,0" Content="Abbrechen" Height="36" VerticalAlignment="Top"/>
+        <StackPanel Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="4" Margin="9.8,243,112.2,49">
+           
+            <TextBlock FontSize="14">
+                Negativer Test
+                <TextBlock FontWeight="Bold"
+                           Foreground="Green"
+                           Text="{Binding NegativTest}">
+                </TextBlock>
+            </TextBlock>
+            <TextBlock FontSize="14">
+                Positiver Test
+                <TextBlock FontWeight="Bold"
+                           Foreground="Red"
+                           Text="{Binding PositivTest}">
+                </TextBlock>
+            </TextBlock>
+        </StackPanel>
+        <Button Grid.Row="8" Grid.Column="4"
+                Margin="187.8,257,10.4,49"
+                FontSize="14"
+                Command="{Binding CmdParticipant}" Grid.ColumnSpan="2" Content="Zu den Teilnehmern"/>
+        <DataGrid Grid.Row="8" Grid.ColumnSpan="5"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Margin="9.8,29,10.4,143"
+                  VerticalScrollBarVisibility="Auto"
+                  ItemsSource="{Binding Examinations}" Grid.Column="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Zu Testende" Width="200" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Datum" Width="100" Binding="{Binding ExaminationAt, StringFormat=dd.MM.yy}"/>
+                <DataGridTextColumn Header="Zeit" Width="110" Binding="{Binding ExaminationAt, StringFormat=hh:mm}"/>
+                <DataGridTextColumn Header="Ergebnis" Width="110"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</controls:MetroWindow>
