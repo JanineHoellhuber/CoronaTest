@@ -16,13 +16,13 @@ using System.Windows.Input;
 
 namespace ClubAdministration.Wpf.ViewModels
 {
-  public class MainViewModel : BaseViewModel
-  {
+    public class MainViewModel : BaseViewModel
+    {
         public ObservableCollection<ExaminationDto> _examinations;
         public int _negativTest;
         public int _positivTest;
-        public DateTime _from;
-        public DateTime _to;
+        public DateTime? _from;
+        public DateTime? _to;
 
         public ObservableCollection<ExaminationDto> Examinations
         {
@@ -34,7 +34,7 @@ namespace ClubAdministration.Wpf.ViewModels
             }
 
         }
-     
+
         public int NegativTest
         {
             get => _negativTest;
@@ -54,8 +54,8 @@ namespace ClubAdministration.Wpf.ViewModels
                 OnPropertyChanged(nameof(PositivTest));
             }
 
-        }  
-        public DateTime From
+        }
+        public DateTime? From
         {
             get => _from;
             set
@@ -64,8 +64,8 @@ namespace ClubAdministration.Wpf.ViewModels
                 OnPropertyChanged(nameof(From));
             }
 
-        } 
-        public DateTime To
+        }
+        public DateTime? To
         {
             get => _to;
             set
@@ -77,49 +77,46 @@ namespace ClubAdministration.Wpf.ViewModels
         }
         public MainViewModel(IWindowController windowController) : base(windowController)
         {
-             LoadCommands();
+            LoadCommands();
         }
 
-    private void LoadCommands()
-    {
-    }
+        private void LoadCommands()
+        {
+        }
 
-    public void Test()
-     {
+        public void Test()
+        {
             NegativTest = Examinations
                 .Count(n => n.TestResult == TestResult.Negative);
             PositivTest = Examinations
                 .Count(p => p.TestResult == TestResult.Positive);
         }
 
-    private async Task LoadDataAsync()
-    {
+        private async Task LoadDataAsync()
+        {
             await using IUnitOfWork uow = new UnitOfWork();
             var examinations = await uow.ExaminationRepository.GetExaminationByDate(From, To);
             Examinations = new ObservableCollection<ExaminationDto>(examinations);
+        }
 
-            
+        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            throw new NotImplementedException();
+        }
 
-    }
-
-    public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-    {
-      throw new NotImplementedException();
-    }
-
-    public static async Task<MainViewModel> CreateAsync(IWindowController windowController)
-    {
-      var viewModel = new MainViewModel(windowController);
-      await viewModel.LoadDataAsync();
-      return viewModel;
-    }
+        public static async Task<MainViewModel> CreateAsync(IWindowController windowController)
+        {
+            var viewModel = new MainViewModel(windowController);
+            await viewModel.LoadDataAsync();
+            return viewModel;
+        }
 
         private ICommand _cmdParticipant;
         public ICommand CmdParticipant
         {
             get
             {
-                if(_cmdParticipant == null)
+                if (_cmdParticipant == null)
                 {
                     _cmdParticipant = new RelayCommand(
                         execute: _ =>
@@ -127,10 +124,31 @@ namespace ClubAdministration.Wpf.ViewModels
                            Controller.ShowWindow(new ParticipantViewModel(Controller), true);
                            LoadDataAsync();
                        },
-                        canExecute: _ =>  true);
+                        canExecute: _ => true);
                 }
                 return _cmdParticipant;
             }
+        }
+        private ICommand _cmdCancel;
+
+        public ICommand CmdCancel
+        {
+            get
+            {
+                if (_cmdCancel == null)
+                {
+                    _cmdCancel = new RelayCommand(
+                        execute: _ =>
+                        {
+                            From = null;
+                            To = null;
+                            LoadDataAsync();
+                        },
+                        canExecute: _ => true);
+                }
+                return _cmdCancel;
+            }
+
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using ClubAdministration.Wpf.Common.Contracts;
 using ClubAdministration.Wpf.ViewModels;
-using CoronaTest.Wpf.Views;
+using CoronaTest.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Windows;
