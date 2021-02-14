@@ -10,14 +10,20 @@
 
 ## Statusbericht:
 
-bis 26.1: 
-* Design der Webseiten erstellt (Login,Registration,...)
+bis 15.2: 
+* Webseite: zur Reservierung und Verwaltung von Test-Terminen
+* WPF: zur Abarbeitung von Testreservierungen
+    
+* Umgesetzt:
 * Import Controller
 * Projektstruktur erstellt
 * SMS-Verifikation
-    
-* Was noch fehlt:
-    * Lauffähigkeit der Webseiten
+* Webseite
+* WPF
 
-bis 15.02
-* lauffähige WPF Anwendung
+* Probleme bei:
+    * SMS verschicken 
+    * WPF: 
+        * Problem zwischen Window und ViewModel (Befehle werden nicht ausgeführt)
+    
+
