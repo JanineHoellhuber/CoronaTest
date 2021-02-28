@@ -39,7 +39,7 @@
                 @Html.DisplayNameFor(model => model.Examinations.FirstOrDefault().TestCenter.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Examinations.FirstOrDefault().Result)
+                @Html.DisplayNameFor(model => model.Examinations.FirstOrDefault().TestResult)
             </th>
         </tr>
     </thead>
@@ -58,7 +58,7 @@
                     @Html.DisplayFor(_ => pd.TestCenter.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(_ => pd.Result)
+                    @Html.DisplayFor(_ => pd.TestResult)
                 </td>
                 <td>
                     <a asp-page="./Examination/Edit" asp-route-id="@pd.Id">Bearbeiten</a> |

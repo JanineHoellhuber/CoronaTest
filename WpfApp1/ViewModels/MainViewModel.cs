@@ -18,13 +18,13 @@ namespace CoronaTest.Wpf.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        public ObservableCollection<ExaminationDto> _examinations;
+        public ObservableCollection<ExaminationsDto> _examinations;
         public int _negativTest;
         public int _positivTest;
         public DateTime? _from;
         public DateTime? _to;
 
-        public ObservableCollection<ExaminationDto> Examinations
+        public ObservableCollection<ExaminationsDto> Examinations
         {
             get => _examinations;
             set
@@ -99,7 +99,7 @@ namespace CoronaTest.Wpf.ViewModels
         {
             await using IUnitOfWork uow = new UnitOfWork();
             var examinations = await uow.ExaminationRepository.GetExaminationByDate(From, To);
-            Examinations = new ObservableCollection<ExaminationDto>(examinations);
+            Examinations = new ObservableCollection<ExaminationsDto>(examinations);
         }
 
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

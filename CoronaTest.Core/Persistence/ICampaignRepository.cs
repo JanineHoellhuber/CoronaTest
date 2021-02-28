@@ -10,5 +10,9 @@ namespace CoronaTest.Core.Persistence
     {
         Task AddRangeAsync(Campaign[] campaigns);
         Task<int> GetCountAsync();
+        Task<Campaign[]> GetAllAsync();
+        Task AddAsync(Campaign campaign);
+        Task<Campaign> GetByIdAsync(int id);
+        void Delete(Campaign campaignInDb);
     }
 }

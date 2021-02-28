@@ -42,7 +42,7 @@ namespace Test.Web.Pages.Participants
                 ModelState.AddModelError("", $"{ex.Message}");
                 return Page();
             }
-            return RedirectToPage("./Participant/LogIn");
+            return RedirectToPage("./Participants/LogIn");
         }
     }
 }

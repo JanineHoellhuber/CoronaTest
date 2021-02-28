@@ -10,6 +10,12 @@ namespace CoronaTest.Core.Persistence
     public interface IExaminationRepository 
     {
         public Task<Examination[]> GetExaminationByParticipant(int id);
-        Task<ExaminationDto[]> GetExaminationByDate(DateTime? from, DateTime? to);
-    }
+        Task<ExaminationsDto[]> GetExaminationByDate(DateTime? from, DateTime? to);
+        Task<Examination[]> GetExaminationByCampaignIdAsync(int id);
+        Task<IEnumerable<Examination>> GetExaminationByTestCenterIdAsync(int id);
+        //IEnumerable<Examination> GetAllAsync();
+        Task<ExaminationsDto[]> GetExaminationFilterAsync(DateTime? from, DateTime? to);
+        Task<IEnumerable<Examination>> GetExaminationsWithFilterByPostCodeAndDateAsync(string postcode, DateTime? from, DateTime? to);
+
+        }
 }
