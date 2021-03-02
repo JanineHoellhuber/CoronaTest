@@ -16,15 +16,25 @@ bis 15.2:
 * Webseite: zur Reservierung und Verwaltung von Test-Terminen
 * WPF: zur Abarbeitung von Testreservierungen
     
-* Umgesetzt:
+## Umgesetzt:
 * Import Controller
 * Projektstruktur erstellt
 * SMS-Verifikation
 * Webseite
 * WPF
 ## Probleme bei:
-* SMS verschicken/Verifizierung
 * WPF: 
      * Problem zwischen Window und ViewModel (Befehle werden nicht ausgeführt)
     
+
+bis 2.3:
+
+## Umgesetzt: 
+* Api (Examination, Statistic, Campaign, TestCenter)
+
+## Probleme bei:
+* Swagger einbinden
+
+
+
 
