@@ -16,6 +16,6 @@ namespace CoronaTest.Core.Persistence
         //IEnumerable<Examination> GetAllAsync();
         Task<ExaminationsDto[]> GetExaminationFilterAsync(DateTime? from, DateTime? to);
         Task<IEnumerable<Examination>> GetExaminationsWithFilterByPostCodeAndDateAsync(string postcode, DateTime? from, DateTime? to);
-
-        }
+        Task<IEnumerable<Examination>> GetExaminationsByFilterAsync(DateTime? from, DateTime? to);
+    }
 }

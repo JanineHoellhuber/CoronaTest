@@ -24,7 +24,7 @@ namespace Test.Web.Controllers
             _unitOfWork = unitOfWork;
         }
 
-      /*  /// <summary>
+        /// <summary>
         /// Liefert die Teststatistik im Zeitraum
         /// </summary>
         /// <response code="200">Die Abfrage war erfolgreich.</response>
@@ -32,19 +32,19 @@ namespace Test.Web.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<StatisticsDto>> GetStatisticsInPeriode(DateTime from, DateTime to)
         {
-            var examinations = await _unitOfWork.ExaminationRepository.GetExaminationsByFilterAsync(null, from, to);
+            var examinations = await _unitOfWork.ExaminationRepository.GetExaminationsByFilterAsync(from, to);
 
             StatisticsDto statistic = new StatisticsDto();
 
             if (examinations != null)
             {
                 statistic.CountExaminations = examinations.Count();
-                statistic.CountUnknownTest = examinations.Count(u => u.Result == TestResult.Unknown);
-                statistic.CountPositiveTest = examinations.Count(p => p.Result == TestResult.Positive);
-                statistic.CountNegativeTest = examinations.Count(n => n.Result == TestResult.Negative);
+                statistic.CountUnknownTest = examinations.Count(u => u.TestResult == TestResult.Unknown);
+                statistic.CountPositiveTest = examinations.Count(p => p.TestResult == TestResult.Positive);
+                statistic.CountNegativeTest = examinations.Count(n => n.TestResult == TestResult.Negative);
             }
 
             return Ok(statistic);
-        }*/
+        }
     }
 }

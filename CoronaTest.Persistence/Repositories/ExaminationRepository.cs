@@ -30,7 +30,7 @@ namespace CoronaTest.Persistence.Repositories
             return await _dbContext.Examination
                 .Where(p => p.Participant.Id == id)
                 .ToArrayAsync();
-                
+
         }
 
         public async Task<ExaminationsDto[]> GetExaminationByDate(DateTime? from, DateTime? to)
@@ -46,9 +46,9 @@ namespace CoronaTest.Persistence.Repositories
 
         public async Task<Examination[]> GetExaminationByCampaignIdAsync(int id)
         {
-           return await _dbContext.Examination
-              .Where(e => e.Campaign.Id == id)
-              .ToArrayAsync();
+            return await _dbContext.Examination
+               .Where(e => e.Campaign.Id == id)
+               .ToArrayAsync();
         }
 
         public async Task<IEnumerable<Examination>> GetExaminationByTestCenterIdAsync(int id)
@@ -79,7 +79,7 @@ namespace CoronaTest.Persistence.Repositories
                 .ToArrayAsync();
         }
 
-       public async Task<IEnumerable<Examination>> GetExaminationsWithFilterByPostCodeAndDateAsync(string postcode, DateTime? from = null, DateTime? to = null)
+        public async Task<IEnumerable<Examination>> GetExaminationsWithFilterByPostCodeAndDateAsync(string postcode, DateTime? from = null, DateTime? to = null)
         {
             var queryExamination = _dbContext.Examination
                .AsQueryable();
@@ -103,7 +103,32 @@ namespace CoronaTest.Persistence.Repositories
             return await queryExamination
                 .ToArrayAsync();
         }
+        public async Task<IEnumerable<Examination>> GetExaminationsByFilterAsync(DateTime? from, DateTime? to)
+        {
+            var query = _dbContext.Examination
+               .AsQueryable();
 
+            if (from != null)
+            {
+                query = query.Where(_ => _.ExaminationAt.Date >= from.Value.Date);
+            }
+            if (to != null)
+            {
+                query = query.Where(_ => _.ExaminationAt.Date <= to.Value.Date);
+            }
+
+            return await query
+                .OrderBy(_ => _.ExaminationAt)
+                .ToArrayAsync();
+        }
+
+        public void Remove(Examination examination)
+        {
+            _dbContext
+                .Examination
+                .Remove(examination);
+        }
+    }
 
     }
-}
+
