@@ -28,22 +28,25 @@ namespace Test.Web.Controllers
         /// Liefert alle Untersuchungen im Zeitraum
         /// </summary>
         /// <response code="200">Die Abfrage war erfolgreich.</response>
-        //[HttpGet]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //public async Task<ActionResult<ExaminationDto[]>> GetExaminationsInPeriode(DateTime? from, DateTime? to)
-        //{
-        //    if (from == null || to == null)
-        //    {
-        //        return BadRequest();
-        //    }
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult> GetExaminationsInPeriodeOfTime(DateTime? from, DateTime? to)
+        {
+            if (from == null || to == null)
+            {
+                return BadRequest();
+            }
 
-        //    ExaminationDto[] examinations = (await _unitOfWork.ExaminationRepository.GetExaminationFilterAsync(from, to))
-        //        .Select(e => new ExaminationDto(e))
-        //        .ToArray();
+            var examinations = await _unitOfWork.ExaminationRepository.GetExaminationFilterAsync(from, to);
 
-        //    return Ok(examinations);
-        //}
+            if (examinations == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(examinations);
+        }
 
         /// <summary>
         /// Liefert alle Untersuchungen in der Gemeinde und im Zeitraum
