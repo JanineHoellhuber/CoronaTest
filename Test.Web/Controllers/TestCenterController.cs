@@ -1,6 +1,7 @@
 ﻿using ClassLibrary1.Entities;
 using CoronaTest.Core.Contracts;
 using CoronaTest.Core.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -29,6 +30,7 @@ namespace Test.Web.Controllers
         /// </summary>
         /// <returns></returns>
         /// <response code="200">Die Abfrage war erfolgreich</response>
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<TestCenterDto[]>> GetTestCenter()
@@ -43,6 +45,7 @@ namespace Test.Web.Controllers
         /// </summary>
         /// <param name="testCenterDto"></param>
         /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpPost()]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -84,6 +87,7 @@ namespace Test.Web.Controllers
         /// </summary>
         /// <param name="postalcode"></param>
         /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpGet()]
         [Route("byPostalCode/{postalcode}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -110,6 +114,7 @@ namespace Test.Web.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -136,6 +141,7 @@ namespace Test.Web.Controllers
         /// <param name="id"></param>
         /// <param name="testCenterDto"></param>
         /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -176,6 +182,7 @@ namespace Test.Web.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -211,6 +218,7 @@ namespace Test.Web.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpGet()]
         [Route("{id}/Examinations")]
         [ProducesResponseType(StatusCodes.Status200OK)]

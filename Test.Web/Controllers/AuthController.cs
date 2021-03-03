@@ -62,6 +62,36 @@ namespace Test.Web.Controllers
 
         }
 
+
+        [Route("register")]
+        [HttpPost()]
+        [AllowAnonymous]
+        public IActionResult Register([FromBody] AuthUser model)
+        {
+            var authUser = _authUsers.SingleOrDefault(u => u.Email == model.Email);
+            if (authUser == null)
+            {
+                return BadRequest(new
+                {
+                    Status = "Error",
+                    Message = "User already exists!"
+                
+                });
+
+            }
+            string hashText = AuthUtils.GenerateHashedPassword(model.Password);
+            authUser = new AuthUser
+            {
+                Email = model.Email,
+                Password = hashText
+            };
+            _authUsers.Add(authUser);
+            return Ok(authUser);
+
+        }
+
+
+
         /// <summary>
         /// JWT erzeugen. Minimale Claim-Infos: Email und Rolle
         /// </summary>

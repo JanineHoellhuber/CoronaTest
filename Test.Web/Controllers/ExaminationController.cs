@@ -1,5 +1,6 @@
 ﻿using CoronaTest.Core.Contracts;
 using CoronaTest.Core.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -28,6 +29,7 @@ namespace Test.Web.Controllers
         /// Liefert alle Untersuchungen im Zeitraum
         /// </summary>
         /// <response code="200">Die Abfrage war erfolgreich.</response>
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -52,6 +54,7 @@ namespace Test.Web.Controllers
         /// Liefert alle Untersuchungen in der Gemeinde und im Zeitraum
         /// </summary>
         /// <response code="200">Die Abfrage war erfolgreich.</response>
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("byPostalCode")]
         [ProducesResponseType(StatusCodes.Status200OK)]

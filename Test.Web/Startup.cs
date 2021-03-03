@@ -1,18 +1,21 @@
 using CoronaTest.Core.Contracts;
 using CoronaTest.Core.Service;
 using CoronaTest.Persistence;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Test.Web
@@ -33,7 +36,29 @@ namespace Test.Web
 
             services.AddSingleton<ISmsService>(_ => new TwilioSmsService(Configuration["Twillio:AccountSid"], Configuration["Twillio:AuthToken"]));
 
-            
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+       .AddJwtBearer(options =>
+       {
+           options.RequireHttpsMetadata = false;
+           options.SaveToken = true;
+           options.TokenValidationParameters = new TokenValidationParameters
+           {
+               ValidateIssuer = true,
+               ValidIssuer = Configuration["Jwt:Issuer"],
+
+               ValidateAudience = true,
+               ValidAudience = Configuration["Jwt:Audience"],
+
+               ValidateIssuerSigningKey = true,
+               IssuerSigningKey = new SymmetricSecurityKey(
+              Encoding.UTF8.GetBytes(Configuration["Jwt:SecretKey"])),
+
+               ValidateLifetime = true,
+               ClockSkew = TimeSpan.Zero
+           };
+       });
+
+
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>

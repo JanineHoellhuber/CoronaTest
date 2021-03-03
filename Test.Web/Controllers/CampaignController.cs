@@ -1,6 +1,7 @@
 ﻿using ClassLibrary1.Entities;
 using CoronaTest.Core.Contracts;
 using CoronaTest.Core.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -27,6 +28,7 @@ namespace Test.Web.Controllers
         /// Liefert alle vorhanden Kampagnen
         /// </summary>
         /// <response code="200">Die Abfrage war erfolgreich.</response>
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<CampaignDto[]>> GetCampaigns()
@@ -41,6 +43,7 @@ namespace Test.Web.Controllers
         /// <summary>
         /// Hinzufügen einer neuen Kampagne
         /// </summary>
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -89,6 +92,7 @@ namespace Test.Web.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -116,6 +120,7 @@ namespace Test.Web.Controllers
         /// <param name="id"></param>
         /// <param name="campaignName"></param>
         /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -153,6 +158,7 @@ namespace Test.Web.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -190,6 +196,7 @@ namespace Test.Web.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpGet()]
         [Route("{id}/Examinations")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -221,6 +228,7 @@ namespace Test.Web.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpGet()]
         [Route("{id}/TestCenters")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -252,6 +260,7 @@ namespace Test.Web.Controllers
         /// <param name="id">campaignId</param>
         /// <param name="testCenterIdToAdd">testCenterId</param>
         /// <returns>CampaignDto</returns>
+        [Authorize(Roles = "Admin")]
         [HttpPost("{id}/TestCenters/{testCenterIdToAdd}")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -300,6 +309,7 @@ namespace Test.Web.Controllers
         /// <param name="id">campaignId</param>
         /// <param name="testCenterIdToRemove">testCenterId</param>
         /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}/TestCenters/{testCenterIdToRemove}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
