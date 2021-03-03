@@ -8,6 +8,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
     <WarningLevel>5</WarningLevel>
+    <DocumentationFile>C:\Users\ninif\source\repos\CoronaTest\Test.Web\Test.Web.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CoronaTest.Core\CoronaTest.Core.csproj" />
     <ProjectReference Include="..\CoronaTest.Persistence\CoronaTest.Persistence.csproj" />
+    <ProjectReference Include="..\Utils\Utils.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Test.Web</name>
+    </assembly>
+    <members>
+        <member name="M:Test.Web.Controllers.AuthController.GenerateJwtToken(CoronaTest.Core.Models.AuthUser)">
+            <summary>
+            JWT erzeugen. Minimale Claim-Infos: Email und Rolle
+            </summary>
+            <param name="userInfo"></param>
+            <returns>Token mit Claims</returns>
+        </member>
+        <member name="M:Test.Web.Controllers.CampaignController.GetCampaigns">
+            <summary>
+            Liefert alle vorhanden Kampagnen
+            </summary>
+            <response code="200">Die Abfrage war erfolgreich.</response>
+        </member>
+        <member name="M:Test.Web.Controllers.CampaignController.PostCampaign(CoronaTest.Core.DTO.CampaignDto)">
+            <summary>
+            Hinzufügen einer neuen Kampagne
+            </summary>
+        </member>
+        <member name="M:Test.Web.Controllers.CampaignController.GetCampaignById(System.Nullable{System.Int32})">
+            <summary>
+            Abfrage einer bestimmten Kampagne
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Web.Controllers.CampaignController.PutCampaign(System.Nullable{System.Int32},System.String)">
+            <summary>
+            Änderung einer Kampagne
+            </summary>
+            <param name="id"></param>
+            <param name="campaignName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Web.Controllers.CampaignController.DeleteCampaign(System.Nullable{System.Int32})">
+            <summary>
+            Löschen einer Kampagne
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Web.Controllers.CampaignController.GetExaminationsByCampaignId(System.Nullable{System.Int32})">
+            <summary>
+            Abfrage der Untersuchungen einer bestimmten Kampagne
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Web.Controllers.CampaignController.GetTestCentersByCampaignId(System.Nullable{System.Int32})">
+            <summary>
+            Abfrage der TestCenter einer bestimmten Kampagne
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Web.Controllers.CampaignController.PostTestCenterToCampaign(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Schaltet ein Testcenter für eine Kampagne frei
+            </summary>
+            <param name="id">campaignId</param>
+            <param name="testCenterIdToAdd">testCenterId</param>
+            <returns>CampaignDto</returns>
+        </member>
+        <member name="M:Test.Web.Controllers.CampaignController.DeleteTestCenerFromCampaign(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Entfernt ein Testcenter von einer bestimmten Kampagne
+            </summary>
+            <param name="id">campaignId</param>
+            <param name="testCenterIdToRemove">testCenterId</param>
+            <returns></returns>
+        </member>
+        <member name="T:Test.Web.Controllers.ExaminationController">
+            <summary>
+            API-Controller für die Abfrage von Kampagnen
+            </summary>
+        </member>
+        <member name="M:Test.Web.Controllers.ExaminationController.GetExaminationsInPeriodeOfTime(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Liefert alle Untersuchungen im Zeitraum
+            </summary>
+            <response code="200">Die Abfrage war erfolgreich.</response>
+        </member>
+        <member name="M:Test.Web.Controllers.ExaminationController.GetExaminationsInAreaAndPeriode(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Liefert alle Untersuchungen in der Gemeinde und im Zeitraum
+            </summary>
+            <response code="200">Die Abfrage war erfolgreich.</response>
+        </member>
+        <member name="T:Test.Web.Controllers.StatisticsController">
+            <summary>
+            API-Controller für die Abfrage von Statistiken
+            </summary>
+        </member>
+        <member name="M:Test.Web.Controllers.StatisticsController.GetStatisticsInPeriode(System.DateTime,System.DateTime)">
+            <summary>
+            Liefert die Teststatistik im Zeitraum
+            </summary>
+            <response code="200">Die Abfrage war erfolgreich.</response>
+        </member>
+        <member name="M:Test.Web.Controllers.StatisticsController.GetStatisticsInAreaAndPeriode(System.String,System.DateTime,System.DateTime)">
+            <summary>
+            Liefert die Teststatistik in der Gemeinde und im Zeitraum
+            </summary>
+            <response code="200">Die Abfrage war erfolgreich.</response>
+        </member>
+        <member name="T:Test.Web.Controllers.TestCenterController">
+            <summary>
+            API-Controller für die Abfrage von den TestCentern
+            </summary>
+        </member>
+        <member name="M:Test.Web.Controllers.TestCenterController.GetTestCenter">
+            <summary>
+            Liefert alle vorhandenen TestCenter
+            </summary>
+            <returns></returns>
+            <response code="200">Die Abfrage war erfolgreich</response>
+        </member>
+        <member name="M:Test.Web.Controllers.TestCenterController.PostTestCenter(CoronaTest.Core.DTO.TestCenterDto)">
+            <summary>
+            Hinzufügen eines neuen TestCenters
+            </summary>
+            <param name="testCenterDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Web.Controllers.TestCenterController.GetTestCenterByPostalcode(System.String)">
+            <summary>
+            Liefert alle vorhandenen TestCenter eines bestimmten Bezirks
+            </summary>
+            <param name="postalcode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Web.Controllers.TestCenterController.GetTestCenterById(System.Nullable{System.Int32})">
+            <summary>
+            Abfrage eines bestimmten TestCenters
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Web.Controllers.TestCenterController.PutTestCenter(System.Nullable{System.Int32},CoronaTest.Core.DTO.TestCenterDto)">
+            <summary>
+            Änderung eines TestCenters
+            </summary>
+            <param name="id"></param>
+            <param name="testCenterDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Web.Controllers.TestCenterController.DeleteTestCenter(System.Nullable{System.Int32})">
+            <summary>
+            Löschen eines TestCenters
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Web.Controllers.TestCenterController.GetExaminationsByTestCenterId(System.Int32)">
+            <summary>
+            Abfrage eines bestimmten TestCenters
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
