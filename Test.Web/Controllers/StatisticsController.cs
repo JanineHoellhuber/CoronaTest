@@ -16,6 +16,7 @@ namespace Test.Web.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize()]
     public class StatisticsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using CoronaTest.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace CoronaTest.Core.Models
 {
-    public class AuthUser
+    public class AuthUser : EntityObject
     {
         [Required]
         [EmailAddress]

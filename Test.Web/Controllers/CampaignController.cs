@@ -14,6 +14,7 @@ namespace Test.Web.Controllers
 {
     [Route("api/[controller]")]
     [Controller]
+    [Authorize()]
     public class CampaignController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

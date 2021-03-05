@@ -16,7 +16,8 @@ namespace CoronaTest.Persistence
         public DbSet<TestCenter> TestCenter { get; set; }
         public DbSet<Participant> Participant { get; set; }
         public DbSet<Examination> Examination { get; set; }
-
+        public DbSet<Role> Role { get; internal set; }
+        public DbSet<AuthUser> User { get; internal set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

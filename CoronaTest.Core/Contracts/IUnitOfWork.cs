@@ -15,6 +15,9 @@ namespace CoronaTest.Core.Contracts
         ITestCenterRepository TestCenterRepository { get; }
         IExaminationRepository ExaminationRepository { get; }
         IParticipantRepository ParticipantRepository { get; }
+        IUserRepository Users { get; }
+        IRoleRepository Roles { get; }
+
 
         Task<int> SaveChangesAsync();
         Task DeleteDatabaseAsync();

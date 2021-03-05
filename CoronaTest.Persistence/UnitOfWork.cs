@@ -32,6 +32,8 @@ namespace CoronaTest.Persistence
             ParticipantRepository = new ParticipantRepository(_dbContext);
             ExaminationRepository = new ExaminationRepository(_dbContext);
             VerificationTokens = new TokenVerificationRepository(_dbContext);
+            UserRepository = new UserRepository(_dbContext);
+            RoleRepository = new RoleRepository(_dbContext);
 
         }
         public ICampaignRepository CampaignRepository { get; }
@@ -39,6 +41,8 @@ namespace CoronaTest.Persistence
 
         public ITestCenterRepository TestCenterRepository { get; }
         public IParticipantRepository ParticipantRepository { get; }
+        public IUserRepository UserRepository { get; }
+        public IRoleRepository RoleRepository { get; }
 
 
         public async Task<int> SaveChangesAsync()
