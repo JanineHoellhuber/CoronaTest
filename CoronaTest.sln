@@ -18,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utils", "Utils\Utils.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoronaTest.ImportController", "CoronaTest.ImportController\CoronaTest.ImportController.csproj", "{AF25F2AF-D1B6-4C58-B2C5-E4ED4CBEB83C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoronaTest.Wpf", "WpfApp1\CoronaTest.Wpf.csproj", "{DDBDFD0B-F7AD-44C1-B099-42BE8EA50E26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoronaTest.Wpf", "WpfApp1\CoronaTest.Wpf.csproj", "{DDBDFD0B-F7AD-44C1-B099-42BE8EA50E26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

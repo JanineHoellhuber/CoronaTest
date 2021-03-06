@@ -4,6 +4,31 @@
         <name>Test.Web</name>
     </assembly>
     <members>
+        <member name="T:Test.Web.Controllers.AuthController">
+            <summary>
+            API-Controller für die Autorisierung
+            </summary>
+        </member>
+        <member name="M:Test.Web.Controllers.AuthController.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="M:Test.Web.Controllers.AuthController.Login(CoronaTest.Core.Models.AuthUser)">
+            <summary>
+            Login
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Web.Controllers.AuthController.Register(CoronaTest.Core.Models.AuthUser)">
+            <summary>
+            Registrierung eines Benutzers
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:Test.Web.Controllers.AuthController.GenerateJwtToken(CoronaTest.Core.Models.AuthUser)">
             <summary>
             JWT erzeugen. Minimale Claim-Infos: Email und Rolle

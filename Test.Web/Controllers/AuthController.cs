@@ -14,6 +14,9 @@ using Utils;
 
 namespace Test.Web.Controllers
 {
+    /// <summary>
+    /// API-Controller für die Autorisierung
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
@@ -21,6 +24,11 @@ namespace Test.Web.Controllers
         private readonly IConfiguration _config;
         private readonly IList<AuthUser> _authUsers;
 
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="config"></param>
         public AuthController(IConfiguration config)
         {
             _config = config;
@@ -36,6 +44,11 @@ namespace Test.Web.Controllers
 
           }
 
+        /// <summary>
+        /// Login
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("login")]
         [HttpPost()]
         [AllowAnonymous]
@@ -62,7 +75,11 @@ namespace Test.Web.Controllers
 
         }
 
-
+        /// <summary>
+        /// Registrierung eines Benutzers
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("register")]
         [HttpPost()]
         [AllowAnonymous]
