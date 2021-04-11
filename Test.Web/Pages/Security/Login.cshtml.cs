@@ -16,24 +16,36 @@ namespace Test.Web.Pages.Security
         private readonly IUnitOfWork _unitOfWork;
         private readonly ISmsService _smsService;
 
+        ///<Summary>
+        /// Sozialversicherungsnummer
+        ///</Summary>
         [BindProperty]
         [Required(ErrorMessage = "Die {0} ist verpflichtend!")]
         [StringLength(10, ErrorMessage ="Die {0} muss genau 10 Zeichen lang sein!", MinimumLength = 10)]
         [DisplayName("SVNr")]
         public string SocialSecurityNumber { get; set; }
+
+        ///<Summary>
+        /// Telefonnummer
+        ///</Summary>
         [BindProperty]
         [Required(ErrorMessage = "Die {0} ist verpflichtend!")]
         [StringLength(16, ErrorMessage = "Die {0} muss zwischen {1} und {2} Zeichen lang sein", MinimumLength = 5)]
         [DisplayName("Handy-Nr")]
         public string Mobilenumber { get; set; }
-        
 
+        ///<Summary>
+        /// Konstruktor
+        ///</Summary>
         public LoginModel(IUnitOfWork unitOfWork,ISmsService smsService)
         {
             _unitOfWork = unitOfWork;
             _smsService = smsService;
         }
 
+        ///<Summary>
+        /// OnPost
+        ///</Summary>
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -51,7 +63,7 @@ namespace Test.Web.Pages.Security
             }
 
 
-            VerificationToken verificationToken = VerificationToken.NewToken();
+            VerificationToken verificationToken = VerificationToken.NewToken(participant);
 
             await _unitOfWork.VerificationTokens.AddAsync(verificationToken);
             await _unitOfWork.SaveChangesAsync();

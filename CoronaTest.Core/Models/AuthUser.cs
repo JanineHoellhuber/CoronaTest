@@ -15,7 +15,7 @@ namespace CoronaTest.Core.Models
         [Required]
         public string Password { get; set; }
 
-        [Required]
+       // [Required]
         public string UserRole { get; set; }
     }
 }

@@ -17,5 +17,10 @@ namespace ClassLibrary1.DTO
         [Required(ErrorMessage = "Die {0} ist verpflichtend")]
         [StringLength(10, ErrorMessage = "Die {0} muss genau 10 Zeichen lang sein!", MinimumLength = 10)]
         public string SSNr { get; set; }
+
+
+     
+
+
     }
 }

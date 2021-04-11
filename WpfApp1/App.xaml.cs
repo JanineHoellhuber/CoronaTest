@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CoronaTest.Wpf.Common;
+using CoronaTest.Wpf.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +15,10 @@ namespace WpfApp1
     /// </summary>
     public partial class App : Application
     {
+        private async void Application_Startup(object sender, StartupEventArgs e)
+        {
+            WindowController controller = new WindowController();
+            controller.ShowWindow(await MainViewModel.CreateAsync(controller));
+        }
     }
 }

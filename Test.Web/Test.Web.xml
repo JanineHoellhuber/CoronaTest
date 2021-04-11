@@ -9,7 +9,7 @@
             API-Controller für die Autorisierung
             </summary>
         </member>
-        <member name="M:Test.Web.Controllers.AuthController.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:Test.Web.Controllers.AuthController.#ctor(Microsoft.Extensions.Configuration.IConfiguration,CoronaTest.Core.Contracts.IUnitOfWork)">
             <summary>
             Constructor
             </summary>
@@ -187,6 +187,26 @@
             </summary>
             <param name="id"></param>
             <returns></returns>
+        </member>
+        <member name="P:Test.Web.Pages.Security.LoginModel.SocialSecurityNumber">
+            <Summary>
+             Sozialversicherungsnummer
+            </Summary>
+        </member>
+        <member name="P:Test.Web.Pages.Security.LoginModel.Mobilenumber">
+            <Summary>
+             Telefonnummer
+            </Summary>
+        </member>
+        <member name="M:Test.Web.Pages.Security.LoginModel.#ctor(CoronaTest.Core.Contracts.IUnitOfWork,CoronaTest.Core.Contracts.ISmsService)">
+            <Summary>
+             Konstruktor
+            </Summary>
+        </member>
+        <member name="M:Test.Web.Pages.Security.LoginModel.OnPostAsync">
+            <Summary>
+             OnPost
+            </Summary>
         </member>
     </members>
 </doc>

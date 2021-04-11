@@ -1,4 +1,5 @@
-﻿using CoronaTest.Core.Models;
+﻿using CoronaTest.Core.Contracts;
+using CoronaTest.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,7 @@ namespace Test.Web.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IConfiguration _config;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IList<AuthUser> _authUsers;
 
 
@@ -29,9 +31,10 @@ namespace Test.Web.Controllers
         /// Constructor
         /// </summary>
         /// <param name="config"></param>
-        public AuthController(IConfiguration config)
+        public AuthController(IConfiguration config, IUnitOfWork unitOfWork)
         {
             _config = config;
+            _unitOfWork = unitOfWork;
             _authUsers = new List<AuthUser>
             {
                 new AuthUser{Email = "admin@htl.at", Password=AuthUtils.GenerateHashedPassword("12345"),
@@ -41,6 +44,7 @@ namespace Test.Web.Controllers
                   new AuthUser{Email = "norole@htl.at", Password=AuthUtils.GenerateHashedPassword("7890")
                },
             };
+
 
           }
 
@@ -83,10 +87,10 @@ namespace Test.Web.Controllers
         [Route("register")]
         [HttpPost()]
         [AllowAnonymous]
-        public IActionResult Register([FromBody] AuthUser model)
+        public async Task<IActionResult> Register(/*string email, string passowrd*/[FromBody] AuthUser model)
         {
             var authUser = _authUsers.SingleOrDefault(u => u.Email == model.Email);
-            if (authUser == null)
+            if (authUser != null)
             {
                 return BadRequest(new
                 {
@@ -100,9 +104,21 @@ namespace Test.Web.Controllers
             authUser = new AuthUser
             {
                 Email = model.Email,
-                Password = hashText
+                Password = hashText,
+                UserRole = "User"
             };
-            _authUsers.Add(authUser);
+
+
+
+            try
+            {
+                await _unitOfWork.UserRepository.AddAsync(authUser);
+                await _unitOfWork.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
             return Ok(authUser);
 
         }

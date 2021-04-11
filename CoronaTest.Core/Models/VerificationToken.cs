@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibrary1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,6 +15,8 @@ namespace CoronaTest.Core.Models
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
+        public Participant Participant { get; set; }
+
         public int Token { get; set; }
 
         public Guid Identifier { get; set; }
@@ -25,14 +28,15 @@ namespace CoronaTest.Core.Models
 
         public bool IsInvalidated { get; set; }
 
-        public static VerificationToken NewToken()
+        public static VerificationToken NewToken(Participant participant)
         {
             return new VerificationToken()
             {
                 Token = new Random().Next(100000, 1000000),
                 Identifier = Guid.NewGuid(),
                 IssuedAt = DateTime.Now,
-                IsInvalidated = false
+                IsInvalidated = false,
+                Participant = participant
             };
         }
     }

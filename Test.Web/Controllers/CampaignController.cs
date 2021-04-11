@@ -32,6 +32,9 @@ namespace Test.Web.Controllers
         [Authorize(Roles = "Admin")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<CampaignDto[]>> GetCampaigns()
         {
             return Ok((await _unitOfWork.CampaignRepository.GetAllAsync())

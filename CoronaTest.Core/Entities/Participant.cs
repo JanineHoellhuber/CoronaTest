@@ -9,6 +9,7 @@ namespace ClassLibrary1
 {
     public class Participant : EntityObject
     {
+
         [Required(ErrorMessage = "Vorname ist verpflichtend")]
         [DisplayName("Vorname")]
         public string FirstName { get; set; }
@@ -62,8 +63,12 @@ namespace ClassLibrary1
         [DisplayName("Stadt")]
         public string City { get; set; }
 
-          public List<VerificationToken> Verifications { get; set; }
+       public List<VerificationToken> Verifications { get; set; }
+        public Participant()
+        {
 
+        }
 
+       
     }
 }
