@@ -1,4 +1,5 @@
 ﻿using ClassLibrary1;
+using CoronaTest.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,13 +8,8 @@ using System.Text;
 
 namespace CoronaTest.Core.Models
 {
-    public class VerificationToken
+    public class VerificationToken : EntityObject
     {
-        public int Id { get; set; }
-
-
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
 
         public Participant Participant { get; set; }
 
@@ -33,10 +29,10 @@ namespace CoronaTest.Core.Models
             return new VerificationToken()
             {
                 Token = new Random().Next(100000, 1000000),
+                Participant = participant,
                 Identifier = Guid.NewGuid(),
                 IssuedAt = DateTime.Now,
-                IsInvalidated = false,
-                Participant = participant
+                IsInvalidated = false
             };
         }
     }

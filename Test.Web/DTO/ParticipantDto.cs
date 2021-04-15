@@ -19,6 +19,8 @@ namespace ClassLibrary1.DTO
         public string SSNr { get; set; }
 
 
+       
+
      
 
 

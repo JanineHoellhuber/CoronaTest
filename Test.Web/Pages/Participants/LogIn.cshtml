@@ -50,6 +50,7 @@
             <tr>
                 <td>
                     @Html.DisplayFor(_ => pd.ExaminationAt.ToShortDateString())
+                    @Html.DisplayFor(_ => pd.ExaminationAt.ToShortTimeString())
                 </td>
                 <td>
                     @Html.DisplayFor(_ => pd.Campaign.Name)

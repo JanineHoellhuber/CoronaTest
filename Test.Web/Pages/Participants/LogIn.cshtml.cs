@@ -6,8 +6,10 @@ using ClassLibrary1;
 using ClassLibrary1.DTO;
 using ClassLibrary1.Entities;
 using CoronaTest.Core.Contracts;
+using CoronaTest.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Test.Web.DTO;
 
 namespace WebApplication1.Pages.Participants
 {
@@ -16,10 +18,11 @@ namespace WebApplication1.Pages.Participants
        
          private readonly IUnitOfWork _unitOfWork;
 
+        [BindProperty]
          public Examination[] Examinations { get; set; }
 
-        [BindProperty]
-        public Participant Participant { get; set; }
+       [BindProperty]
+        public ParticipantDto2 Participant { get; set; }
 
 
         public LogInModel(IUnitOfWork unitOfWork)
@@ -27,8 +30,16 @@ namespace WebApplication1.Pages.Participants
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IActionResult> OnGet()
+        public async Task<IActionResult> OnGet(Guid? verificationIdentifier)
         {
+
+            if (verificationIdentifier == null)
+            {
+                return RedirectToPage("../Security/TokenError");
+            }
+            VerificationToken verificationToken = await _unitOfWork.VerificationTokens.GetTokenByIdentifierAsync(verificationIdentifier.Value);
+          
+            Participant = new ParticipantDto2(verificationToken.Participant); //id null?
             Examinations = await _unitOfWork.ExaminationRepository.GetExaminationByParticipant(Participant.Id);
 
             return Page();

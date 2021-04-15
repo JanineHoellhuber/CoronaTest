@@ -10,6 +10,7 @@ using CoronaTest.Core.Models;
 using CoronaTest.Core.Validation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Test.Web.DTO;
 
 namespace WebApplication1
 {
@@ -24,82 +25,26 @@ namespace WebApplication1
             _smsService = smsService;
         }
 
-
-        public int Id { get; set; }
-
         [BindProperty]
-        [Required(ErrorMessage = "Vorname ist verpflichtend")]
-        [DisplayName("Vorname")]
-        public string FirstName { get; set; }
-
-        [BindProperty]
-        [Required]
-        [DisplayName("Nachname")]
-        public string LastName { get; set; }
-
-        [BindProperty]
-        [Required]
-        [DisplayName("Geburtsdatum")]
-        public DateTime Birthdate { get; set; }
-
-        [BindProperty]
-        [Required]
-        [DisplayName("Geschlecht")]
-        public string Gender { get; set; }
-
-        public string Name => $"{LastName} {FirstName}";
-
-        [BindProperty]
-        [Required]
-        [DisplayName("Sozialversicherungsnummer")]
-        public string SocialSecurityNumber { get; set; }
-
-        [BindProperty]
-        [Required]
-        [DisplayName("Telefonnummer")]
-        public string Mobilenumber { get; set; }
-
-        [BindProperty]
-        [Required]
-        [DisplayName("Straße")]
-        public string Street { get; set; }
-
-        [BindProperty]
-        [Required]
-        [DisplayName("HausNr")]
-        public string HouseNr { get; set; }
-
-        [BindProperty]
-        [DisplayName("Tür")]
-        public string Door { get; set; }
-
-        [BindProperty]
-        [DisplayName("Stiege")]
-        public string Stair { get; set; }
-
-        [BindProperty]
-        [Required]
-        [DisplayName("PLZ")]
-        public string Postcode { get; set; }
-
-        [BindProperty]
-        [Required]
-        [DisplayName("Ort")]
-        public string Place { get; set; }
-
-        [BindProperty]
-        [Required]
-        [DisplayName("Stadt")]
-        public string City { get; set; }
+        public ParticipantDto2 Participant { get; set; }
 
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
 
+          
+              //Participant = new ParticipantDto2();
+            return Page();
         }
+
+        //public Participant participant = new Participant();
+
 
         public async Task<IActionResult> OnPost()
         {
+
+
+
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -112,51 +57,40 @@ namespace WebApplication1
              }*/
 
 
-            var participant = new Participant()
-            {
-                Id = Id,
-                FirstName = FirstName,
-                LastName = LastName,
-                Birthdate = Birthdate,
-                Gender = Gender,
-                SocialSecurityNumber = SocialSecurityNumber,
-                Mobilenumber = Mobilenumber,
-                Street = Street,
-                HouseNr = HouseNr,
-                Stair = Stair,
-                Door = Door, 
-                Place = Place,
-                Postcode = Postcode,
-                City = City
+            //  var p = GetParticipant();
 
-            };
+            var p = Participant.GetNewModel();
 
+            await _unitOfWork.ParticipantRepository.AddAsync(p);
 
-
-            await _unitOfWork.ParticipantRepository.AddAsync(participant);
-
-
-
-            try
-            {
-                await _unitOfWork.SaveChangesAsync();
-
-            }
-            catch(ValidationException ex)
-            {
-                ModelState.AddModelError("", $"{ex.Message}");
-                return Page();
-            }
-
-            VerificationToken verificationToken = VerificationToken.NewToken(participant);
-
-            await _unitOfWork.VerificationTokens.AddAsync(verificationToken);
             await _unitOfWork.SaveChangesAsync();
-            _smsService.SendSms(Mobilenumber, $"CoronaTest - Token: {verificationToken.Token} !");
 
-            return RedirectToPage("./Login", new { verificationIdentifier = verificationToken.Identifier });
+            /* try
+             {
+                 await _unitOfWork.SaveChangesAsync();
+
+             }
+             catch(ValidationException ex)
+             {
+                 ModelState.AddModelError("", $"{ex.Message}");
+                 return Page();
+             }*/
+
+
+             VerificationToken verificationToken = VerificationToken.NewToken(p);
+
+             await _unitOfWork.VerificationTokens.AddAsync(verificationToken);
+             await _unitOfWork.SaveChangesAsync();
+             _smsService.SendSms(Participant.Mobilenumber, $"CoronaTest - Token: {verificationToken.Token} !");
+
+
+            return RedirectToPage("../Security/Login");//, new { verificationIdentifier = verificationToken.Identifier });
         }
 
-
+      /* public Participant GetParticipant()
+        {
+            Participant.SaveParticipant(ref participant);
+            return participant;
+        }*/
     }
 }
