@@ -1,10 +1,10 @@
 ﻿using CoronaTest.Core.Entities;
-using CoronaTest.Enums;
+using CoronaTest.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClassLibrary1.Entities
+namespace CoronaTest.Core.Entities
 {
     public class Examination : EntityObject
     {

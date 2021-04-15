@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using CoronaTest.Persistence.Repositories;
 using CoronaTest.Core.Contracts;
 using CoronaTest.Core.Persistence;
-using ClassLibrary1;
+using CoronaTest.Core.Entities;
 
 namespace CoronaTest.Persistence
 {

@@ -39,7 +39,7 @@
         <Button Grid.Row="4" Grid.Column="5"
                     Command="{Binding CmdCancel}" Margin="9.8,8.8,0.4,0" Content="Abbrechen" Height="36" VerticalAlignment="Top"/>
         <StackPanel Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="4" Margin="9.8,243,112.2,49">
-           
+
             <TextBlock FontSize="14">
                 Negativer Test
                 <TextBlock FontWeight="Bold"
@@ -72,6 +72,5 @@
                 <DataGridTextColumn Header="Ergebnis" Width="110" Binding="{Binding TestResult}"/>
             </DataGrid.Columns>
         </DataGrid>
-
-    </Grid>
+        </Grid>
 </controls:MetroWindow>

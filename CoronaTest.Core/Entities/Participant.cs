@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace ClassLibrary1
+namespace CoronaTest.Core.Entities
 {
     public class Participant : EntityObject
     {

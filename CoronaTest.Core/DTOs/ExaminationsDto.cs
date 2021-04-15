@@ -1,11 +1,11 @@
-﻿using ClassLibrary1;
-using ClassLibrary1.Entities;
-using CoronaTest.Enums;
+﻿
+using CoronaTest.Core.Entities;
+using CoronaTest.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CoronaTest.Core.DTO
+ namespace CoronaTest.Core.DTOs
 {
     public class ExaminationsDto
     {
@@ -22,5 +22,11 @@ namespace CoronaTest.Core.DTO
             ExaminationAt = examination.ExaminationAt;
             Identifier = examination.Identifier;
         }
+
+        public ExaminationsDto()
+        {
+
+        }
+
     }
 }

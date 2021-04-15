@@ -1,5 +1,5 @@
 ﻿using CoronaTest.Wpf.Common;
-using CoronaTest.Wpf.ViewModels;
+using CoronaTest.WPF;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WpfApp1
+namespace CoronaTest.Wpf
 {
     /// <summary>
     /// Interaction logic for App.xaml

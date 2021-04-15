@@ -1,5 +1,7 @@
-﻿using ClassLibrary1.Entities;
-using CoronaTest.Core.DTO;
+﻿
+using CoronaTest.Core.DTOs;
+using CoronaTest.Core.DTOs;
+using CoronaTest.Core.Entities;
 using CoronaTest.Core.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -33,15 +35,38 @@ namespace CoronaTest.Persistence.Repositories
 
         }
 
-        public async Task<ExaminationsDto[]> GetExaminationByDate(DateTime? from, DateTime? to)
+        public async Task<ExaminationsDto[]> GetExaminationByDate(DateTime? from = null, DateTime? to = null)
         {
-            return await _dbContext.Examination
-               .Include(p => p.Participant)
-               .Select(s => new ExaminationsDto(s))
-               .ToArrayAsync();
+            var query = _dbContext
+              .Examination
+              .Include(_ => _.Participant)
+              .Include(_ => _.TestCenter)
+              .Include(_ => _.Campaign)
+              .AsQueryable();
+
+            if (from != null)
+            {
+                query = query.Where(_ => _.ExaminationAt.Date >= from.Value.Date);
+            }
+            if (to != null)
+            {
+                query = query.Where(_ => _.ExaminationAt.Date <= to.Value.Date);
+            }
+
+           
+     
+            return await query.Select( s => new ExaminationsDto
+            {
+                //Name = s.,
+                
+                TestResult = s.TestResult,
+                ExaminationAt = s.ExaminationAt,
+                Identifier = s.Identifier
+
+            } ).ToArrayAsync();
 
 
-        }
+    }
 
 
         public async Task<Examination[]> GetExaminationByCampaignIdAsync(int id)

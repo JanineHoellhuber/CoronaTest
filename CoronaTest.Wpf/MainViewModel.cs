@@ -1,9 +1,8 @@
-﻿using ClassLibrary1.Entities;
-using CoronaTest.Wpf.Common;
-using CoronaTest.Core.Contracts;
-using CoronaTest.Core.DTO;
-using CoronaTest.Enums;
+﻿using CoronaTest.Core.Contracts;
+using CoronaTest.Core.DTOs;
+using CoronaTest.Core.Enums;
 using CoronaTest.Persistence;
+using CoronaTest.Wpf.Common;
 using CoronaTest.Wpf.Common.Contracts;
 using System;
 using System.Collections.Generic;
@@ -12,9 +11,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using ClubAdministration.Wpf.Common;
 
-namespace CoronaTest.Wpf.ViewModels
+namespace CoronaTest.WPF
 {
     public class MainViewModel : BaseViewModel
     {
@@ -114,7 +112,7 @@ namespace CoronaTest.Wpf.ViewModels
             return viewModel;
         }
 
-        private ICommand _cmdParticipant;
+       /* private ICommand _cmdParticipant;
         public ICommand CmdParticipant
         {
             get
@@ -123,15 +121,15 @@ namespace CoronaTest.Wpf.ViewModels
                 {
                     _cmdParticipant = new RelayCommand(
                         execute: _ =>
-                       {
-                           Controller.ShowWindow(new ParticipantViewModel(Controller), true);
-                           LoadDataAsync();
-                       },
+                        {
+                            Controller.ShowWindow(new ParticipantViewModel(Controller), true);
+                            LoadDataAsync();
+                        },
                         canExecute: _ => true);
                 }
                 return _cmdParticipant;
             }
-        }
+        }*/
         private ICommand _cmdCancel;
 
         public ICommand CmdCancel
@@ -155,3 +153,32 @@ namespace CoronaTest.Wpf.ViewModels
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

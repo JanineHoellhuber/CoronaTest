@@ -1,4 +1,5 @@
-﻿using ClassLibrary1.Entities;
+﻿
+using CoronaTest.Core.Entities;
 using CoronaTest.Core.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;

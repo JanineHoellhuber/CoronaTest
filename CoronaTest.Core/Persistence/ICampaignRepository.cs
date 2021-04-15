@@ -1,4 +1,4 @@
-﻿using ClassLibrary1.Entities;
+﻿using CoronaTest.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;

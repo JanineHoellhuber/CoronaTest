@@ -1,6 +1,7 @@
-﻿using ClassLibrary1.Entities;
+﻿
 using CoronaTest.Core.Contracts;
 using CoronaTest.Core.DTO;
+using CoronaTest.Core.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

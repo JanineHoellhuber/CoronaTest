@@ -1,9 +1,10 @@
-﻿using ClassLibrary1.Entities;
-using CoronaTest.Core.DTO;
+﻿using CoronaTest.Core.Entities;
+using CoronaTest.Core.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using CoronaTest.Core.DTOs;
 
 namespace CoronaTest.Core.Persistence
 {

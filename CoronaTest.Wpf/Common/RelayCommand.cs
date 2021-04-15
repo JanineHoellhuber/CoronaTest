@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace ClubAdministration.Wpf.Common
+namespace CoronaTest.Wpf.Common
 {
   public class RelayCommand : ICommand
     {

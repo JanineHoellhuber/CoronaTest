@@ -1,6 +1,5 @@
 ﻿
-using ClassLibrary1;
-using ClassLibrary1.Entities;
+using CoronaTest.Core.Entities;
 using CoronaTest.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

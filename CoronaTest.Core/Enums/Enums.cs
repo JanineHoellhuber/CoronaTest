@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CoronaTest.Enums
+namespace CoronaTest.Core.Enums
 {
    
         public enum TestResult

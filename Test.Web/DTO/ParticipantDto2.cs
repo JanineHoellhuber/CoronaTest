@@ -1,4 +1,5 @@
 ﻿using ClassLibrary1;
+using CoronaTest.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

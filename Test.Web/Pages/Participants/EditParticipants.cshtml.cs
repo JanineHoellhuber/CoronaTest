@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ClassLibrary1;
 using CoronaTest.Core.Contracts;
+using CoronaTest.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

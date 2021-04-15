@@ -1,6 +1,6 @@
-﻿using ClassLibrary1;
-using ClassLibrary1.Entities;
-using CoronaTest.Enums;
+﻿
+using CoronaTest.Core.Entities;
+using CoronaTest.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
