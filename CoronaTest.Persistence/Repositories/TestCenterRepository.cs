@@ -43,7 +43,8 @@ namespace CoronaTest.Persistence.Repositories
             return campaign.AvailableTestCenters.ToArray();
         }
 
-        public async Task<TestCenter> GetTestCenterByIdAsync(int id)
+       
+            public async Task<TestCenter> GetTestCenterByIdAsync(int id)
         {
             return await _dbContext
                 .TestCenter

@@ -4,6 +4,7 @@ using CoronaTest.Core.Enums;
 using CoronaTest.Persistence;
 using CoronaTest.Wpf.Common;
 using CoronaTest.Wpf.Common.Contracts;
+using CoronaTest.Wpf.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -112,7 +113,7 @@ namespace CoronaTest.WPF
             return viewModel;
         }
 
-       /* private ICommand _cmdParticipant;
+        private ICommand _cmdParticipant;
         public ICommand CmdParticipant
         {
             get
@@ -129,7 +130,7 @@ namespace CoronaTest.WPF
                 }
                 return _cmdParticipant;
             }
-        }*/
+        }
         private ICommand _cmdCancel;
 
         public ICommand CmdCancel

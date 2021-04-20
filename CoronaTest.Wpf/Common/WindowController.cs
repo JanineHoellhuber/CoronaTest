@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using CoronaTest.WPF;
+using CoronaTest.Wpf.ViewModels;
 
 namespace CoronaTest.Wpf.Common
 {
@@ -20,7 +21,7 @@ namespace CoronaTest.Wpf.Common
         null => throw new ArgumentNullException(nameof(viewModel)),
 
         MainViewModel _ => new MainWindow(),
-       // ParticipantViewModel _ => new ParticipantWindow(),
+        ParticipantViewModel _ => new ParticipantWindow(),
 
         // default -> InvalidOperationException
         _ => throw new InvalidOperationException($"Unbekanntes ViewModel '{viewModel}'"),

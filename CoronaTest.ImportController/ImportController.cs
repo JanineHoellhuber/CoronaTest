@@ -40,8 +40,7 @@ namespace CoronaTest.ImportController
                     To = DateTime.Parse(grp[2]),
                     Name = grp[3],
                     AvailableTestCenters = grp[4].Split(',').Select(t => testCenters[t]).ToList()
-                })
-                .ToArray();
+                }).ToArray();
             
             return campagins;
         }

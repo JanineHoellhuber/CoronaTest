@@ -55,10 +55,15 @@ namespace Test.Web.Pages.Security
 
             var participant = await _unitOfWork.ParticipantRepository.GetByParticipantBySocialSecurityNumberAndMobileNumberAsync(SocialSecurityNumber);
 
-            if (SocialSecurityNumber != participant.SocialSecurityNumber)
+            if (SocialSecurityNumber != participant?.SocialSecurityNumber)
             {
                 ModelState.AddModelError(nameof(SocialSecurityNumber), "Diese SVNr ist unbekannt!");
 
+                return Page();
+            }
+            if (Mobilenumber != participant?.Mobilenumber)
+            {
+                ModelState.AddModelError(nameof(Mobilenumber), "Diese Handynummer ist unbekannt!");
                 return Page();
             }
 

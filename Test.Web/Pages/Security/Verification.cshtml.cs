@@ -40,7 +40,7 @@ namespace Test.Web.Pages.Security
 
            if(verificationToken.Token == Token && verificationToken.ValidUntil >= DateTime.Now)
             {
-                return RedirectToPage("/Participants/Login", new { verificationIdentifier = verificationToken.Identifier });
+                return RedirectToPage("/Security/Success", new { verificationIdentifier = verificationToken.Identifier });
             }
             else
             {

@@ -17,5 +17,6 @@ namespace CoronaTest.Core.Persistence
         Task<IEnumerable<TestCenter>> GetTestCenterByPostcodeAsync(string postalcode);
         Task<TestCenter> GetTestCenterByIdAsync(int id);
         void Delete(TestCenter testCenter);
+      //  Task GetAllSlotsByCampaignIdAsync(int id1, int id2);
     }
 }

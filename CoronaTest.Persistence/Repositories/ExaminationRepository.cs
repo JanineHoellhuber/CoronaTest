@@ -23,6 +23,15 @@ namespace CoronaTest.Persistence.Repositories
         }
 
 
+        public async Task AddRangeAsync(Examination[] examinations)
+        {
+             await _dbContext.Examination.AddRangeAsync(examinations);
+        }
+        public async Task<int> GetCountAsync()
+        {
+            return await _dbContext.Examination.CountAsync();
+        }
+
         //public async IEnumerable<Examination> GetAllAsync()
         //{
         //    return await _dbContext.Examination.ToArrayAsync();
@@ -67,6 +76,19 @@ namespace CoronaTest.Persistence.Repositories
 
 
     }
+        public async Task<Examination> GetByIdentifierAsync(string examinationIdentifier)
+        {
+            return await _dbContext.Examination
+                .Where(s => s.Identifier == examinationIdentifier)
+                .SingleOrDefaultAsync();
+        }
+
+        public async Task<Examination> GetByIdAsync(int id)
+        {
+            return await _dbContext.Examination
+                .SingleOrDefaultAsync(s => s.Id == id);
+        }
+
 
 
         public async Task<Examination[]> GetExaminationByCampaignIdAsync(int id)

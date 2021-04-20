@@ -18,7 +18,7 @@ namespace WebApplication1.Pages.Participants
        
          private readonly IUnitOfWork _unitOfWork;
 
-        [BindProperty]
+       
          public Examination[] Examinations { get; set; }
 
        [BindProperty]

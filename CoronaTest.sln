@@ -18,7 +18,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utils", "Utils\Utils.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoronaTest.ImportController", "CoronaTest.ImportController\CoronaTest.ImportController.csproj", "{AF25F2AF-D1B6-4C58-B2C5-E4ED4CBEB83C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoronaTest.Wpf", "CoronaTest.Wpf\CoronaTest.Wpf.csproj", "{3C1EB152-EEE6-4EED-9D83-9B682EB6F337}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoronaTest.Wpf", "CoronaTest.Wpf\CoronaTest.Wpf.csproj", "{3C1EB152-EEE6-4EED-9D83-9B682EB6F337}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadExamination", "LoadExamination\LoadExamination.csproj", "{60C44534-6786-454C-8A69-11E9CDB61200}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +56,10 @@ Global
 		{3C1EB152-EEE6-4EED-9D83-9B682EB6F337}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C1EB152-EEE6-4EED-9D83-9B682EB6F337}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C1EB152-EEE6-4EED-9D83-9B682EB6F337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60C44534-6786-454C-8A69-11E9CDB61200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60C44534-6786-454C-8A69-11E9CDB61200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60C44534-6786-454C-8A69-11E9CDB61200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60C44534-6786-454C-8A69-11E9CDB61200}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

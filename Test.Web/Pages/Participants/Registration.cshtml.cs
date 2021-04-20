@@ -29,12 +29,11 @@ namespace WebApplication1
         public ParticipantDto2 Participant { get; set; }
 
 
-        public IActionResult OnGet()
+        public void OnGet()
         {
 
-          
-              //Participant = new ParticipantDto2();
-            return Page();
+
+            Participant = new ParticipantDto2();
         }
 
         //public Participant participant = new Participant();
@@ -42,8 +41,6 @@ namespace WebApplication1
 
         public async Task<IActionResult> OnPost()
         {
-
-
 
             if (!ModelState.IsValid)
             {
@@ -84,7 +81,7 @@ namespace WebApplication1
              _smsService.SendSms(Participant.Mobilenumber, $"CoronaTest - Token: {verificationToken.Token} !");
 
 
-            return RedirectToPage("../Security/Login");//, new { verificationIdentifier = verificationToken.Identifier });
+            return RedirectToPage("../Security/Verification", new { verificationIdentifier = verificationToken.Identifier });//, new { verificationIdentifier = verificationToken.Identifier });
         }
 
       /* public Participant GetParticipant()

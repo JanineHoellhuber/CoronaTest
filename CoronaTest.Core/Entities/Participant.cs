@@ -65,10 +65,7 @@ namespace CoronaTest.Core.Entities
         public string City { get; set; }
 
        public List<VerificationToken> Verifications { get; set; }
-        public Participant()
-        {
-
-        }
+       
 
 
       
