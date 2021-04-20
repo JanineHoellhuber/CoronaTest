@@ -32,6 +32,13 @@ namespace CoronaTest.Persistence.Repositories
              await _dbContext.Participant
                 .AddAsync(participant);
         }
+
+        public async Task AddRangeAsync(Participant participant)
+        {
+            await _dbContext.Participant.AddRangeAsync(participant);
+        }
+
+
         public async Task<Participant> GetByParticipantBySocialSecurityNumberAndMobileNumberAsync(string socialSecurityNumber)
         {
            return await _dbContext.Participant

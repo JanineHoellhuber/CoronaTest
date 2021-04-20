@@ -11,6 +11,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Test.Web.DTO;
 using Utils;
 
 namespace Test.Web.Controllers
@@ -56,7 +57,7 @@ namespace Test.Web.Controllers
         [Route("login")]
         [HttpPost()]
         [AllowAnonymous]
-        public IActionResult Login([FromBody] AuthUser model)
+        public IActionResult Login(UserDto model)
         {
             var authUser = _authUsers.SingleOrDefault(u => u.Email == model.Email);
             if(authUser == null)
@@ -87,9 +88,9 @@ namespace Test.Web.Controllers
         [Route("register")]
         [HttpPost()]
         [AllowAnonymous]
-        public async Task<IActionResult> Register(/*string email, string passowrd*/[FromBody] AuthUser model)
+        public async Task<IActionResult> Register(string email, string password /*[FromBody] AuthUser model*/)
         {
-            var authUser = _authUsers.SingleOrDefault(u => u.Email == model.Email);
+            var authUser = _authUsers.SingleOrDefault(u => u.Email == email);
             if (authUser != null)
             {
                 return BadRequest(new
@@ -100,10 +101,10 @@ namespace Test.Web.Controllers
                 });
 
             }
-            string hashText = AuthUtils.GenerateHashedPassword(model.Password);
+            string hashText = AuthUtils.GenerateHashedPassword(password);
             authUser = new AuthUser
             {
-                Email = model.Email,
+                Email = email,
                 Password = hashText,
                 UserRole = "User"
             };

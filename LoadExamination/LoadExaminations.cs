@@ -218,6 +218,11 @@ namespace LoadExamination
                 participant.Stair = $"{random.Next(1, 10)}";
 
 
+                await uow.ParticipantRepository.AddRangeAsync(participant);
+
+
+                await uow.SaveChangesAsync();
+
                 var examination = new Examination
                 {
                     Campaign = randomCampaign,

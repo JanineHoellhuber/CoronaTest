@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Test.Web.DTO
 {
-    public class AuthUserDto
+    public class UserDto
     {
         [Required]
         [EmailAddress]

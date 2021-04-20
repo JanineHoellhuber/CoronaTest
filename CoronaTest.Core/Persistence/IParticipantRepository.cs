@@ -12,6 +12,7 @@ namespace CoronaTest.Core.Persistence
         Task AddRangeAsync(Participant[] participants);
         Task<int> GetCountAsync();
         Task AddAsync(Participant participant);
+        Task AddRangeAsync(Participant participant);
 
         //void Remove(ParticipantDto participantDto);
         //Task<ParticipantDto> GetByIdAsync(int value);

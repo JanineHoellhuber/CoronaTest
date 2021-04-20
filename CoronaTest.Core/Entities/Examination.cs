@@ -20,8 +20,8 @@ namespace CoronaTest.Core.Entities
         public static Examination CreateNew()
         {
             return new Examination();
-             }
         }
+    }
 
       
 

@@ -38,6 +38,7 @@ namespace LoadExamination
 
             Console.WriteLine($"  Es wurden {cntExaminations} Kampagnen gespeichert!");
 
-        }
+            
         }
     }
+}

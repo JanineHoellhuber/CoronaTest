@@ -2,6 +2,7 @@
 using CoronaTest.Core.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,7 +22,11 @@ namespace CoronaTest.Persistence.Repositories
             await _dbContext.User
                     .AddAsync(user);
         }
+        public async Task<AuthUser> GetById(string email)
+        {
+            return  _dbContext.User.SingleOrDefault(e => e.Email == email);
+        }
 
-      
+
     }
 }

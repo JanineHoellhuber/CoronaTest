@@ -1,6 +1,5 @@
 ﻿
 using CoronaTest.Core.DTOs;
-using CoronaTest.Core.DTOs;
 using CoronaTest.Core.Entities;
 using CoronaTest.Core.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -66,8 +65,8 @@ namespace CoronaTest.Persistence.Repositories
      
             return await query.Select( s => new ExaminationsDto
             {
-                //Name = s.,
-                
+
+                Name = s.Participant.Name,
                 TestResult = s.TestResult,
                 ExaminationAt = s.ExaminationAt,
                 Identifier = s.Identifier
@@ -79,6 +78,8 @@ namespace CoronaTest.Persistence.Repositories
         public async Task<Examination> GetByIdentifierAsync(string examinationIdentifier)
         {
             return await _dbContext.Examination
+                .Include(p => p.Participant)
+                .Include(t => t.TestCenter)
                 .Where(s => s.Identifier == examinationIdentifier)
                 .SingleOrDefaultAsync();
         }

@@ -18,14 +18,14 @@ namespace CoronaTest.Wpf.ViewModels
         private string _participantIdentifier;
         private string _examinationIdentifier;
         private List<TestResult> _testResults;
-        private TestResult _selectedTestResult;
+        private string _selectedTestResult;
         private string _examinationIdentifierInfo;
         private string _participantIdentifierInfo;
         private string _testResultInfo;
         private string _errorMessage;
         private Examination _examination;
 
-        public TestResult SelectedTestResult
+        public string SelectedTestResult
         {
             get 
             {
@@ -145,7 +145,6 @@ namespace CoronaTest.Wpf.ViewModels
         public ICommand CmdExaminationIdentifier { get; set; }
         public ICommand CmdParticipantIdentifier { get; set; }
         public ICommand CmdTestResult { get; set; }
-        public ICommand CmdStartNewExamination { get; set; }
         public ICommand CmdQuitExamination { get; set; }
 
 
@@ -170,7 +169,7 @@ namespace CoronaTest.Wpf.ViewModels
             CmdParticipantIdentifier = new RelayCommand(_ => ParticipantIdentifierAsync(),
              _ => ParticipantIdentifier != null);
             CmdTestResult = new RelayCommand(async _ => await TestResultAsync(),
-                _ => SelectedTestResult != TestResult.Unknown);
+                _ => SelectedTestResult != null);
             CmdQuitExamination = new RelayCommand(_ => Controller.CloseWindow(this), _ => true);
 
         }
@@ -203,18 +202,27 @@ namespace CoronaTest.Wpf.ViewModels
      
         public async Task TestResultAsync()
         {
-            if (SelectedTestResult == TestResult.Negative || SelectedTestResult == TestResult.Positive)
+            await using IUnitOfWork unitOfWork = new UnitOfWork();
+
+            var examinationInDb = await unitOfWork.ExaminationRepository.GetByIdAsync(Examination.Id);
+
+            if (SelectedTestResult == "Positiv")
             {
-                await using IUnitOfWork unitOfWork = new UnitOfWork();
+              
+                examinationInDb.TestResult = TestResult.Positive;
 
-                var examinationInDb = await unitOfWork.ExaminationRepository.GetByIdAsync(Examination.Id);
 
-                examinationInDb.TestResult = SelectedTestResult;
-            
-                await unitOfWork.SaveChangesAsync();
-
-            
             }
+            else if(SelectedTestResult == "Negativ")
+            {
+                examinationInDb.TestResult = TestResult.Negative;
+            }
+            else
+            {
+                examinationInDb.TestResult = TestResult.Unknown;
+            }
+            await unitOfWork.SaveChangesAsync();
+
         }
 
         private ICommand _cmdExit;

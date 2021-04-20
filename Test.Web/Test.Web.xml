@@ -15,14 +15,14 @@
             </summary>
             <param name="config"></param>
         </member>
-        <member name="M:Test.Web.Controllers.AuthController.Login(CoronaTest.Core.Models.AuthUser)">
+        <member name="M:Test.Web.Controllers.AuthController.Login(Test.Web.DTO.UserDto)">
             <summary>
             Login
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:Test.Web.Controllers.AuthController.Register(CoronaTest.Core.Models.AuthUser)">
+        <member name="M:Test.Web.Controllers.AuthController.Register(System.String,System.String)">
             <summary>
             Registrierung eines Benutzers
             </summary>

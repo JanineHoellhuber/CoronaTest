@@ -6,5 +6,6 @@ namespace CoronaTest.Core.Contracts
     public interface IUserRepository
     {
         Task AddAsync(AuthUser user);
+        Task<AuthUser> GetById(string email);
     }
 }
