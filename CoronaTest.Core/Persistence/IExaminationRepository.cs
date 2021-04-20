@@ -22,5 +22,6 @@ namespace CoronaTest.Core.Persistence
         Task<Examination> GetByIdAsync(int id);
         Task AddRangeAsync(Examination[] examinations);
         Task<int> GetCountAsync();
+        Task<int> NegativTests();
     }
 }

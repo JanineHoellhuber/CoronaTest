@@ -80,14 +80,18 @@ namespace CoronaTest.WPF
         public MainViewModel(IWindowController windowController) : base(windowController)
         {
             LoadCommands();
+           Test();
         }
 
         private void LoadCommands()
         {
         }
 
-        public void Test()
+        public async Task Test()
         {
+             await using IUnitOfWork uow = new UnitOfWork();
+            var testresultsnegativ = await uow.ExaminationRepository.NegativTests();
+
             NegativTest = Examinations
                 .Count(n => n.TestResult == TestResult.Negative);
             PositivTest = Examinations

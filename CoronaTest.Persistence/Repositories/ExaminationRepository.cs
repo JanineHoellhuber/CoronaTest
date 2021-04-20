@@ -1,6 +1,7 @@
 ﻿
 using CoronaTest.Core.DTOs;
 using CoronaTest.Core.Entities;
+using CoronaTest.Core.Enums;
 using CoronaTest.Core.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,14 +12,31 @@ using System.Threading.Tasks;
 
 namespace CoronaTest.Persistence.Repositories
 {
+
     public class ExaminationRepository : IExaminationRepository
     {
+
+        TestResult[] t = 
+            {
+                TestResult.Unknown,
+                TestResult.Negative,
+                TestResult.Positive
+            };
 
         private readonly ApplicationDbContext _dbContext;
 
         public ExaminationRepository(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
+        }
+
+        public async Task<int> NegativTests()
+        {
+            return await _dbContext.Examination
+                .Where(s => s.TestResult == TestResult.Negative)
+                .CountAsync();
+               
+
         }
 
 
@@ -54,11 +72,11 @@ namespace CoronaTest.Persistence.Repositories
 
             if (from != null)
             {
-                query = query.Where(_ => _.ExaminationAt.Date >= from.Value.Date);
+                query = query.Where(e => e.ExaminationAt.Date >= from.Value.Date);
             }
             if (to != null)
             {
-                query = query.Where(_ => _.ExaminationAt.Date <= to.Value.Date);
+                query = query.Where(e => e.ExaminationAt.Date <= to.Value.Date);
             }
 
            
